@@ -1,0 +1,2 @@
+# Core dependencies for pond planner application
+PyYAML>=6.0

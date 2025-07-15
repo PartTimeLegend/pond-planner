@@ -1,0 +1,624 @@
+fish_species:
+  alewife:
+    name: "Alewife"
+    adult_length_cm: 20
+    bioload_factor: 0.9
+    min_liters_per_fish: 114
+
+  american_eel:
+    name: "American Eel"
+    adult_length_cm: 100
+    bioload_factor: 3.2
+    min_liters_per_fish: 2280
+
+  arctic_char:
+    name: "Arctic Char"
+    adult_length_cm: 50
+    bioload_factor: 1.9
+    min_liters_per_fish: 760
+
+  barbel:
+    name: "Barbel"
+    adult_length_cm: 75
+    bioload_factor: 2.8
+    min_liters_per_fish: 1140
+
+  bighead_carp:
+    name: "Bighead Carp"
+    adult_length_cm: 90
+    bioload_factor: 3.3
+    min_liters_per_fish: 1900
+
+  bitterling:
+    name: "Bitterling"
+    adult_length_cm: 8
+    bioload_factor: 0.5
+    min_liters_per_fish: 38
+
+  black_bullhead:
+    name: "Black Bullhead"
+    adult_length_cm: 35
+    bioload_factor: 1.4
+    min_liters_per_fish: 380
+
+  black_carp:
+    name: "Black Carp"
+    adult_length_cm: 120
+    bioload_factor: 4.1
+    min_liters_per_fish: 3325
+
+  bleak:
+    name: "Bleak"
+    adult_length_cm: 15
+    bioload_factor: 0.7
+    min_liters_per_fish: 57
+
+  blue_catfish:
+    name: "Blue Catfish"
+    adult_length_cm: 140
+    bioload_factor: 4.3
+    min_liters_per_fish: 4750
+
+  blue_orfe:
+    name: "Blue Orfe"
+    adult_length_cm: 45
+    bioload_factor: 1.5
+    min_liters_per_fish: 380
+
+  bowfin:
+    name: "Bowfin"
+    adult_length_cm: 70
+    bioload_factor: 2.6
+    min_liters_per_fish: 1140
+
+  bream:
+    name: "Common Bream"
+    adult_length_cm: 50
+    bioload_factor: 1.8
+    min_liters_per_fish: 475
+
+  bristlenose_pleco:
+    name: "Bristlenose Pleco"
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 76
+
+  brook_trout:
+    name: "Brook Trout"
+    adult_length_cm: 35
+    bioload_factor: 1.4
+    min_liters_per_fish: 475
+
+  brown_bullhead:
+    name: "Brown Bullhead"
+    adult_length_cm: 45
+    bioload_factor: 1.7
+    min_liters_per_fish: 570
+
+  brown_trout:
+    name: "Brown Trout"
+    adult_length_cm: 45
+    bioload_factor: 1.8
+    min_liters_per_fish: 665
+
+  buffalo_fish:
+    name: "Bigmouth Buffalo"
+    adult_length_cm: 80
+    bioload_factor: 2.7
+    min_liters_per_fish: 1520
+
+  burbot:
+    name: "Burbot"
+    adult_length_cm: 50
+    bioload_factor: 1.8
+    min_liters_per_fish: 665
+
+  carp:
+    name: "Common Carp"
+    adult_length_cm: 80
+    bioload_factor: 3.0
+    min_liters_per_fish: 1520
+
+  catfish:
+    name: "Channel Catfish"
+    adult_length_cm: 65
+    bioload_factor: 2.2
+    min_liters_per_fish: 760
+
+  chain_pickerel:
+    name: "Chain Pickerel"
+    adult_length_cm: 40
+    bioload_factor: 1.6
+    min_liters_per_fish: 475
+
+  chinese_algae_eater:
+    name: "Chinese Algae Eater"
+    adult_length_cm: 25
+    bioload_factor: 1.0
+    min_liters_per_fish: 190
+
+  chub:
+    name: "Chub"
+    adult_length_cm: 40
+    bioload_factor: 1.4
+    min_liters_per_fish: 285
+
+  cisco:
+    name: "Cisco"
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  clown_loach:
+    name: "Clown Loach"
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  clown_pleco:
+    name: "Clown Pleco"
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 45
+
+  comet_goldfish:
+    name: "Comet Goldfish"
+    adult_length_cm: 30
+    bioload_factor: 1.2
+    min_liters_per_fish: 285
+
+  crappie:
+    name: "Black Crappie"
+    adult_length_cm: 25
+    bioload_factor: 1.0
+    min_liters_per_fish: 190
+
+  crucian_carp:
+    name: "Crucian Carp"
+    adult_length_cm: 30
+    bioload_factor: 1.2
+    min_liters_per_fish: 285
+
+  dace:
+    name: "Dace"
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 57
+
+  dojo_loach:
+    name: "Dojo Loach"
+    adult_length_cm: 30
+    bioload_factor: 0.9
+    min_liters_per_fish: 190
+
+  drum:
+    name: "Freshwater Drum"
+    adult_length_cm: 60
+    bioload_factor: 2.1
+    min_liters_per_fish: 950
+
+  eel:
+    name: "European Eel"
+    adult_length_cm: 80
+    bioload_factor: 2.8
+    min_liters_per_fish: 1520
+
+  fantail_goldfish:
+    name: "Fantail Goldfish"
+    adult_length_cm: 15
+    bioload_factor: 0.9
+    min_liters_per_fish: 114
+
+  fathead_minnow:
+    name: "Fathead Minnow"
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 30
+
+  flathead_catfish:
+    name: "Flathead Catfish"
+    adult_length_cm: 120
+    bioload_factor: 4.0
+    min_liters_per_fish: 3800
+
+  gar:
+    name: "Longnose Gar"
+    adult_length_cm: 90
+    bioload_factor: 3.0
+    min_liters_per_fish: 1710
+
+  ghost_carp:
+    name: "Ghost Carp"
+    adult_length_cm: 55
+    bioload_factor: 2.3
+    min_liters_per_fish: 855
+
+  goldfish:
+    name: "Goldfish"
+    adult_length_cm: 20
+    bioload_factor: 1.0
+    min_liters_per_fish: 75
+
+  goldeye:
+    name: "Goldeye"
+    adult_length_cm: 30
+    bioload_factor: 1.2
+    min_liters_per_fish: 285
+
+  golden_medaka:
+    name: "Golden Medaka"
+    adult_length_cm: 4
+    bioload_factor: 0.2
+    min_liters_per_fish: 15
+
+  golden_rudd:
+    name: "Golden Rudd"
+    adult_length_cm: 35
+    bioload_factor: 1.1
+    min_liters_per_fish: 285
+
+  golden_tench:
+    name: "Golden Tench"
+    adult_length_cm: 40
+    bioload_factor: 1.3
+    min_liters_per_fish: 380
+
+  grass_carp:
+    name: "Grass Carp"
+    adult_length_cm: 100
+    bioload_factor: 3.5
+    min_liters_per_fish: 1900
+
+  grass_pickerel:
+    name: "Grass Pickerel"
+    adult_length_cm: 25
+    bioload_factor: 1.0
+    min_liters_per_fish: 190
+
+  grayling:
+    name: "Grayling"
+    adult_length_cm: 30
+    bioload_factor: 1.3
+    min_liters_per_fish: 285
+
+  green_sunfish:
+    name: "Green Sunfish"
+    adult_length_cm: 20
+    bioload_factor: 0.9
+    min_liters_per_fish: 114
+
+  gudgeon:
+    name: "Gudgeon"
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 45
+
+  herring:
+    name: "European Herring"
+    adult_length_cm: 30
+    bioload_factor: 1.2
+    min_liters_per_fish: 285
+
+  hybrid_striped_bass:
+    name: "Hybrid Striped Bass"
+    adult_length_cm: 60
+    bioload_factor: 2.2
+    min_liters_per_fish: 950
+
+  ide:
+    name: "Ide"
+    adult_length_cm: 50
+    bioload_factor: 1.6
+    min_liters_per_fish: 475
+
+  japanese_eel:
+    name: "Japanese Eel"
+    adult_length_cm: 60
+    bioload_factor: 2.1
+    min_liters_per_fish: 950
+
+  japanese_rice_fish:
+    name: "Japanese Rice Fish (Medaka)"
+    adult_length_cm: 4
+    bioload_factor: 0.2
+    min_liters_per_fish: 15
+
+  koi:
+    name: "Koi"
+    adult_length_cm: 60
+    bioload_factor: 2.5
+    min_liters_per_fish: 950
+
+  koi_asagi:
+    name: "Asagi Koi"
+    adult_length_cm: 70
+    bioload_factor: 2.7
+    min_liters_per_fish: 1330
+
+  koi_bekko:
+    name: "Bekko Koi"
+    adult_length_cm: 60
+    bioload_factor: 2.5
+    min_liters_per_fish: 950
+
+  koi_butterfly:
+    name: "Butterfly Koi"
+    adult_length_cm: 75
+    bioload_factor: 2.8
+    min_liters_per_fish: 1520
+
+  koi_ginrin:
+    name: "Ginrin Koi"
+    adult_length_cm: 65
+    bioload_factor: 2.6
+    min_liters_per_fish: 1140
+
+  koi_kohaku:
+    name: "Kohaku Koi"
+    adult_length_cm: 60
+    bioload_factor: 2.5
+    min_liters_per_fish: 950
+
+  koi_koromo:
+    name: "Koromo Koi"
+    adult_length_cm: 60
+    bioload_factor: 2.5
+    min_liters_per_fish: 950
+
+  koi_ochiba_shigure:
+    name: "Ochiba Shigure Koi"
+    adult_length_cm: 60
+    bioload_factor: 2.5
+    min_liters_per_fish: 950
+
+  koi_showa_sanshoku:
+    name: "Showa Sanshoku Koi"
+    adult_length_cm: 70
+    bioload_factor: 2.7
+    min_liters_per_fish: 1330
+
+  koi_taisho_sanke:
+    name: "Taisho Sanke Koi"
+    adult_length_cm: 65
+    bioload_factor: 2.6
+    min_liters_per_fish: 1140
+
+  koi_telescope:
+    name: "Telescope Goldfish"
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 95
+
+  koi_veiltail:
+    name: "Veiltail Goldfish"
+    adult_length_cm: 18
+    bioload_factor: 0.9
+    min_liters_per_fish: 114
+
+  lamprey:
+    name: "River Lamprey"
+    adult_length_cm: 30
+    bioload_factor: 1.2
+    min_liters_per_fish: 285
+
+  largemouth_bass:
+    name: "Largemouth Bass"
+    adult_length_cm: 55
+    bioload_factor: 2.0
+    min_liters_per_fish: 760
+
+  longfin_sand_sucker:
+    name: "Longfin Sand Sucker"
+    adult_length_cm: 25
+    bioload_factor: 1.0
+    min_liters_per_fish: 190
+
+  mooneye:
+    name: "Mooneye"
+    adult_length_cm: 25
+    bioload_factor: 1.0
+    min_liters_per_fish: 190
+
+  muskie:
+    name: "Muskellunge"
+    adult_length_cm: 130
+    bioload_factor: 4.2
+    min_liters_per_fish: 3325
+
+  northern_pike:
+    name: "Northern Pike"
+    adult_length_cm: 100
+    bioload_factor: 3.5
+    min_liters_per_fish: 1900
+
+  paddlefish:
+    name: "Paddlefish"
+    adult_length_cm: 150
+    bioload_factor: 4.5
+    min_liters_per_fish: 5700
+
+  pleco:
+    name: "Common Pleco"
+    adult_length_cm: 45
+    bioload_factor: 2.0
+    min_liters_per_fish: 570
+
+  rainbow_trout:
+    name: "Rainbow Trout"
+    adult_length_cm: 50
+    bioload_factor: 1.9
+    min_liters_per_fish: 665
+
+  redear_sunfish:
+    name: "Redear Sunfish"
+    adult_length_cm: 25
+    bioload_factor: 1.0
+    min_liters_per_fish: 190
+
+  redhorse:
+    name: "River Redhorse"
+    adult_length_cm: 50
+    bioload_factor: 1.8
+    min_liters_per_fish: 665
+
+  roach:
+    name: "Common Roach"
+    adult_length_cm: 25
+    bioload_factor: 1.0
+    min_liters_per_fish: 190
+
+  rosy_red_minnow:
+    name: "Rosy Red Minnow"
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 30
+
+  rudd:
+    name: "Common Rudd"
+    adult_length_cm: 30
+    bioload_factor: 1.1
+    min_liters_per_fish: 285
+
+  sailfin_pleco:
+    name: "Sailfin Pleco"
+    adult_length_cm: 50
+    bioload_factor: 2.2
+    min_liters_per_fish: 665
+
+  sauger:
+    name: "Sauger"
+    adult_length_cm: 40
+    bioload_factor: 1.6
+    min_liters_per_fish: 475
+
+  shubunkin:
+    name: "Shubunkin Goldfish"
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  silver_carp:
+    name: "Silver Carp"
+    adult_length_cm: 85
+    bioload_factor: 3.1
+    min_liters_per_fish: 1710
+
+  smallmouth_bass:
+    name: "Smallmouth Bass"
+    adult_length_cm: 40
+    bioload_factor: 1.6
+    min_liters_per_fish: 475
+
+  smelt:
+    name: "Rainbow Smelt"
+    adult_length_cm: 15
+    bioload_factor: 0.7
+    min_liters_per_fish: 76
+
+  spotted_bass:
+    name: "Spotted Bass"
+    adult_length_cm: 45
+    bioload_factor: 1.8
+    min_liters_per_fish: 665
+
+  steelhead:
+    name: "Steelhead Trout"
+    adult_length_cm: 60
+    bioload_factor: 2.2
+    min_liters_per_fish: 950
+
+  striped_bass:
+    name: "Striped Bass"
+    adult_length_cm: 80
+    bioload_factor: 2.8
+    min_liters_per_fish: 1520
+
+  sucker:
+    name: "White Sucker"
+    adult_length_cm: 45
+    bioload_factor: 1.6
+    min_liters_per_fish: 570
+
+  sunfish:
+    name: "Bluegill Sunfish"
+    adult_length_cm: 20
+    bioload_factor: 0.9
+    min_liters_per_fish: 114
+
+  tench:
+    name: "Common Tench"
+    adult_length_cm: 40
+    bioload_factor: 1.3
+    min_liters_per_fish: 380
+
+  ten_spined_stickleback:
+    name: "Ten-spined Stickleback"
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 19
+
+  three_spined_stickleback:
+    name: "Three-spined Stickleback"
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  tiger_muskie:
+    name: "Tiger Muskellunge"
+    adult_length_cm: 110
+    bioload_factor: 3.8
+    min_liters_per_fish: 2850
+
+  walleye:
+    name: "Walleye"
+    adult_length_cm: 60
+    bioload_factor: 2.2
+    min_liters_per_fish: 950
+
+  warmouth:
+    name: "Warmouth"
+    adult_length_cm: 20
+    bioload_factor: 0.9
+    min_liters_per_fish: 114
+
+  white_bass:
+    name: "White Bass"
+    adult_length_cm: 35
+    bioload_factor: 1.4
+    min_liters_per_fish: 380
+
+  white_crappie:
+    name: "White Crappie"
+    adult_length_cm: 25
+    bioload_factor: 1.0
+    min_liters_per_fish: 190
+
+  white_perch:
+    name: "White Perch"
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  wels_catfish:
+    name: "Wels Catfish"
+    adult_length_cm: 200
+    bioload_factor: 5.5
+    min_liters_per_fish: 9500
+
+  yellow_bullhead:
+    name: "Yellow Bullhead"
+    adult_length_cm: 30
+    bioload_factor: 1.3
+    min_liters_per_fish: 285
+
+  yellow_perch:
+    name: "Yellow Perch"
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  zander:
+    name: "Zander"
+    adult_length_cm: 60
+    bioload_factor: 2.2
+    min_liters_per_fish: 950

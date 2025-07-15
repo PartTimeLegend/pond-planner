@@ -1,0 +1,160 @@
+pond_shapes:
+  circular:
+    name: "Circular"
+    description: "Round pond (width parameter treated as diameter)"
+    formula_type: "circular"
+    area_formula: "pi * (width / 2)^2"
+    multiplier: 1.0
+    uses_length: false
+    uses_width: true
+    width_represents: "diameter"
+
+  crescent:
+    name: "Crescent"
+    description: "Crescent moon-shaped pond"
+    formula_type: "approximation"
+    area_formula: "length * width * multiplier"
+    multiplier: 0.45
+    uses_length: true
+    uses_width: true
+
+  figure-8:
+    name: "Figure-8"
+    description: "Figure-eight shaped pond with two connected circles"
+    formula_type: "approximation"
+    area_formula: "length * width * multiplier"
+    multiplier: 0.60
+    uses_length: true
+    uses_width: true
+
+  hexagonal:
+    name: "Hexagonal"
+    description: "Six-sided regular hexagon (width as side length)"
+    formula_type: "polygon"
+    area_formula: "(3 * sqrt(3) / 2) * width^2"
+    multiplier: 1.0
+    uses_length: false
+    uses_width: true
+    width_represents: "side_length"
+
+  irregular:
+    name: "Irregular"
+    description: "Irregular or custom-shaped pond"
+    formula_type: "approximation"
+    area_formula: "length * width * multiplier"
+    multiplier: 0.80
+    uses_length: true
+    uses_width: true
+
+  kidney:
+    name: "Kidney"
+    description: "Kidney-shaped pond with curved indentation"
+    formula_type: "approximation"
+    area_formula: "length * width * multiplier"
+    multiplier: 0.75
+    uses_length: true
+    uses_width: true
+
+  l-shaped:
+    name: "L-Shaped"
+    description: "L-shaped pond with two rectangular sections"
+    formula_type: "approximation"
+    area_formula: "length * width * multiplier"
+    multiplier: 0.70
+    uses_length: true
+    uses_width: true
+
+  octagonal:
+    name: "Octagonal"
+    description: "Eight-sided regular octagon (width as side length)"
+    formula_type: "polygon"
+    area_formula: "2 * (1 + sqrt(2)) * width^2"
+    multiplier: 1.0
+    uses_length: false
+    uses_width: true
+    width_represents: "side_length"
+
+  oval:
+    name: "Oval"
+    description: "Elliptical pond with curved sides"
+    formula_type: "elliptical"
+    area_formula: "pi * (length / 2) * (width / 2)"
+    multiplier: 1.0
+    uses_length: true
+    uses_width: true
+
+  rectangular:
+    name: "Rectangular"
+    description: "Standard rectangular pond with straight sides"
+    formula_type: "simple"
+    area_formula: "length * width"
+    multiplier: 1.0
+    uses_length: true
+    uses_width: true
+
+  star:
+    name: "Star"
+    description: "Star-shaped pond with pointed extensions"
+    formula_type: "approximation"
+    area_formula: "length * width * multiplier"
+    multiplier: 0.55
+    uses_length: true
+    uses_width: true
+
+  teardrop:
+    name: "Teardrop"
+    description: "Teardrop-shaped pond with one rounded end"
+    formula_type: "approximation"
+    area_formula: "pi * (length / 2) * (width / 2) * multiplier"
+    multiplier: 0.65
+    uses_length: true
+    uses_width: true
+
+  triangular:
+    name: "Triangular"
+    description: "Three-sided triangular pond"
+    formula_type: "triangular"
+    area_formula: "0.5 * length * width"
+    multiplier: 1.0
+    uses_length: true
+    uses_width: true
+
+shape_categories:
+  geometric:
+    - circular
+    - hexagonal
+    - octagonal
+    - oval
+    - rectangular
+    - triangular
+
+  organic:
+    - crescent
+    - irregular
+    - kidney
+    - teardrop
+
+  complex:
+    - figure-8
+    - l-shaped
+    - star
+
+validation_rules:
+  min_dimensions:
+    length: 0.1
+    width: 0.1
+    depth: 0.05
+  max_dimensions:
+    length: 1000.0
+    width: 1000.0
+    depth: 100.0
+  shape_specific_rules:
+    circular:
+      length_ignored: true
+      min_diameter: 0.5
+    hexagonal:
+      length_ignored: true
+      min_side_length: 0.2
+    octagonal:
+      length_ignored: true
+      min_side_length: 0.2
