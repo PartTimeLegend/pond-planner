@@ -180,10 +180,16 @@ jobs:
     needs: [build]
     if: github.ref == 'refs/heads/master'
     permissions:
-      contents: read
+      contents: write
       pages: write
       id-token: write
       security-events: write
+      packages: write
+      attestations: write
+      pull-requests: write
+      deployments: write
+      issues: write
+      discussions: write
 
     steps:
       - name: Checkout code
