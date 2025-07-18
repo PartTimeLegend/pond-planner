@@ -1,5 +1,4 @@
 from typing import Dict
-from Fish import Fish
 from interfaces.DataRepository import DataRepository
 
 
@@ -201,4 +200,5 @@ class StockingCalculator:
             ...     print("Warning: Pond may be overstocked")
         """
         required_volume = self.calculate_required_volume(fish_stock)
+        return pond_volume_liters >= required_volume
         return pond_volume_liters >= required_volume

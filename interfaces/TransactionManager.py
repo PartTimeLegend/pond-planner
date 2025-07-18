@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, Callable, TypeVar
+from typing import Callable, TypeVar
 
 T = TypeVar('T')
 

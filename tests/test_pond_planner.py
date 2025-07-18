@@ -1,7 +1,5 @@
 import pytest
-from unittest.mock import Mock, patch
 from PondPlanner import PondPlanner
-from PondDimensions import PondDimensions
 
 
 class TestPondPlanner:
@@ -90,14 +88,15 @@ class TestPondPlanner:
         batch = {
             "goldfish": 10,
             "koi": 3,
-            "goldfish": 5  # This should add to existing
+            "shubunkin": 5
         }
 
         self.planner.add_fish_batch(batch)
         stock = self.planner.fish_stock
 
-        assert stock["goldfish"] == 5  # Last value in dict
+        assert stock["goldfish"] == 10
         assert stock["koi"] == 3
+        assert stock["shubunkin"] == 5
 
     def test_calculate_required_volume(self):
         """Test calculating required volume for fish stock."""
@@ -202,4 +201,5 @@ class TestPondPlanner:
             pass
 
         # Stock should remain unchanged
+        assert self.planner.fish_stock == original_stock
         assert self.planner.fish_stock == original_stock
