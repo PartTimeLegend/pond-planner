@@ -1,5 +1,7 @@
 # Pond Planner 🐟
 
+[![Build and Publish Docker Image](https://github.com/PartTimeLegend/pond-planner/actions/workflows/docker-build.yml/badge.svg)](https://github.com/PartTimeLegend/pond-planner/actions/workflows/docker-build.yml)
+
 A comprehensive pond planning application that helps you calculate optimal pond dimensions, fish stocking levels, and equipment requirements for your backyard pond project.
 
 ## Features
