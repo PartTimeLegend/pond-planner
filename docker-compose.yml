@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  pond-planner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: pond-planner:latest
+    container_name: pond-planner-app
+    restart: unless-stopped
+    
+    # Interactive mode for CLI application
+    stdin_open: true
+    tty: true
+    
+    # Environment variables
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    
+    # Mount volumes for persistent data if needed
+    volumes:
+      - pond-data:/app/data
+      # Mount source code for development (comment out for production)
+      # - .:/app
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "from PondPlanner import PondPlanner; p = PondPlanner(); print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  # Development service with mounted source code
+  pond-planner-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    image: pond-planner:dev
+    container_name: pond-planner-dev
+    
+    # Interactive mode
+    stdin_open: true
+    tty: true
+    
+    # Override command for development
+    command: ["python", "main.py"]
+    
+    # Environment variables
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+      - DEVELOPMENT=1
+    
+    # Mount source code for development
+    volumes:
+      - .:/app
+      - pond-dev-data:/app/data
+    
+    # Install development dependencies
+    depends_on: []
+
+volumes:
+  pond-data:
+    driver: local
+  pond-dev-data:
+    driver: local
+
+networks:
+  default:
+    name: pond-planner-network

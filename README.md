@@ -37,10 +37,28 @@ A comprehensive pond planning application that helps you calculate optimal pond 
 
 ## Installation
 
+### Option 1: Docker (Recommended)
+
+The easiest way to run Pond Planner is using Docker:
+
+```bash
+# Pull the latest image from GitHub Container Registry
+docker pull ghcr.io/parttimelegend/pond-planner:latest
+
+# Run the application interactively
+docker run -it ghcr.io/parttimelegend/pond-planner:latest
+
+# Or run with docker-compose
+git clone https://github.com/parttimelegend/pond-planner.git
+cd pond-planner
+docker-compose up pond-planner
+```
+
+### Option 2: Local Installation
+
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/PartTimeLegend/pond-planner.git
    cd pond-planner
    ```
 
@@ -58,6 +76,20 @@ A comprehensive pond planning application that helps you calculate optimal pond 
    ```
 
 ## Quick Start
+
+### Docker Usage
+
+```bash
+# Interactive mode
+docker run -it ghcr.io/parttimelegend/pond-planner:latest
+
+# With docker-compose for development
+docker-compose up pond-planner-dev
+
+# Build locally
+docker build -t pond-planner .
+docker run -it pond-planner
+```
 
 ### Command Line Interface
 
@@ -293,3 +325,30 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 For questions, issues, or feature requests, please open an issue on GitHub.
+
+## Docker Images
+
+The application is available as Docker images with multiple tags:
+
+- `latest` - Latest stable release from main branch
+- `main` - Latest build from main branch
+- `develop` - Latest build from develop branch
+- `v1.0.0` - Specific version tags
+- `YYYY-MM-DD` - Daily builds from main branch
+
+### Image Variants
+
+- **Production**: Multi-stage optimized image (~100MB)
+- **Development**: Includes development tools and dependencies
+
+## CI/CD
+
+The project uses GitHub Actions for:
+
+- ✅ **Automated Testing** - Python 3.9, 3.11, and 3.12
+- ✅ **Code Quality** - Linting with ruff, formatting with black
+- ✅ **Security Scanning** - bandit, safety, and Trivy
+- ✅ **Docker Building** - Multi-platform (amd64, arm64)
+- ✅ **Container Registry** - GitHub Container Registry
+- ✅ **Documentation** - GitHub Pages deployment
+- ✅ **Release Management** - Automated releases on tags
