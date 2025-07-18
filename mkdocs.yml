@@ -1,0 +1,118 @@
+site_name: Pond Planner Documentation
+site_description: A comprehensive pond planning application for calculating pond dimensions, fish stocking, and equipment requirements
+site_author: Antony Bailey
+site_url: https://parttimelegend.github.io/pond-planner
+
+repo_name: parttimelegend/pond-planner
+repo_url: https://github.com/parttimelegend/pond-planner
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: light-blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: light-blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.integrate
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/waves
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quick-start.md
+    - Docker Usage: getting-started/docker.md
+  - User Guide:
+    - Pond Shapes: user-guide/shapes.md
+    - Fish Database: user-guide/fish.md
+    - Equipment Sizing: user-guide/equipment.md
+    - Reports: user-guide/reports.md
+  - API Reference:
+    - PondPlanner: api/pond-planner.md
+    - Calculators: api/calculators.md
+    - Services: api/services.md
+  - Developer Guide:
+    - Architecture: developer/architecture.md
+    - Contributing: developer/contributing.md
+    - Testing: developer/testing.md
+  - About:
+    - License: about/license.md
+    - Changelog: about/changelog.md
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_root_heading: true
+            show_source: true
+            show_signature_annotations: true
+            separate_signature: true
+            merge_init_into_class: true
+            docstring_section_style: table
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - tables
+  - footnotes
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/parttimelegend/pond-planner
+    - icon: fontawesome/brands/docker
+      link: https://github.com/parttimelegend/pond-planner/pkgs/container/pond-planner
+  version:
+    provider: mike
+    default: latest
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: Copyright &copy; 2025 Antony Bailey - MIT License

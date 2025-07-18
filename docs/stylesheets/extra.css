@@ -1,0 +1,78 @@
+:root {
+  --md-primary-fg-color: #1976d2;
+  --md-primary-fg-color--light: #42a5f5;
+  --md-primary-fg-color--dark: #1565c0;
+  --md-accent-fg-color: #03a9f4;
+}
+
+.md-header {
+  background: linear-gradient(135deg, var(--md-primary-fg-color) 0%, var(--md-primary-fg-color--light) 100%);
+}
+
+.md-typeset code {
+  background-color: rgba(3, 169, 244, 0.1);
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+}
+
+.md-typeset pre > code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.md-typeset .admonition {
+  border-left: 4px solid var(--md-accent-fg-color);
+}
+
+.md-footer {
+  background: linear-gradient(135deg, var(--md-primary-fg-color--dark) 0%, var(--md-primary-fg-color) 100%);
+}
+
+/* Custom styling for fish emoji */
+.md-typeset h1 .twemoji,
+.md-typeset h2 .twemoji,
+.md-typeset h3 .twemoji {
+  vertical-align: middle;
+  margin-right: 0.3em;
+}
+
+/* Code block improvements */
+.md-typeset .highlight {
+  margin: 1em 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.md-typeset .highlight pre {
+  margin: 0;
+  padding: 1em;
+}
+
+/* Navigation improvements */
+.md-nav__item .md-nav__link--active {
+  color: var(--md-accent-fg-color);
+  font-weight: 500;
+}
+
+/* Table improvements */
+.md-typeset table:not([class]) {
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+  font-weight: 500;
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  padding: 0.75em 1em;
+}
+
+.md-typeset table:not([class]) tr:nth-child(even) {
+  background-color: rgba(3, 169, 244, 0.05);
+}
