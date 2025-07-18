@@ -127,7 +127,7 @@ Current Fish Stock:
 Stocking Analysis:
 - Required Volume: {required_volume:,.0f} liters
 - Available Volume: {volume:,.0f} liters
-- Status: {'✓ Adequate' if is_adequate else '⚠ Overstocked'}
+- Status: {"✓ Adequate" if is_adequate else "⚠ Overstocked"}
 - Total Bioload: {bioload:.1f}
 """
         else:
@@ -136,9 +136,9 @@ Stocking Analysis:
         report += f"""
 Equipment Recommendations:
 - Pump Size: {pump_lph:,} LPH ({pump_category})
-- {filter_specs['biological_filter']}
-- UV Sterilizer: {filter_specs['uv_sterilizer']}
-- Mechanical Filter: {filter_specs['mechanical_filter']}
+- {filter_specs["biological_filter"]}
+- UV Sterilizer: {filter_specs["uv_sterilizer"]}
+- Mechanical Filter: {filter_specs["mechanical_filter"]}
 
 Maximum Stocking Recommendations:
 """
