@@ -162,14 +162,13 @@ jobs:
       uses: aquasecurity/trivy-action@master
       with:
         format: sarif
-        output: trivy-results.sarif
         output: 'trivy-results.sarif'
 
     - name: Upload Trivy scan results to GitHub Security tab
       if: github.event_name != 'pull_request'
       uses: github/codeql-action/upload-sarif@v2
       with:
-        sarif_file: 'trivy-results.sarif'
+        sarif_file: trivy-results.sarif
 
   deploy-docs:
     runs-on: ubuntu-latest
@@ -203,7 +202,7 @@ jobs:
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
-        path: ./site
+      with:
         path: './site'
 
     - name: Deploy to GitHub Pages
