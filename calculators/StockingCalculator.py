@@ -1,5 +1,3 @@
-from typing import Dict
-
 from interfaces.DataRepository import DataRepository
 
 
@@ -18,7 +16,7 @@ class StockingCalculator:
         """
         self._fish_repository = fish_repository
 
-    def calculate_required_volume(self, fish_stock: Dict[str, int]) -> float:
+    def calculate_required_volume(self, fish_stock: dict[str, int]) -> float:
         """
         Calculate the total volume required for optimal housing of all fish in the stock.
 
@@ -70,7 +68,7 @@ class StockingCalculator:
             total_liters += fish.min_liters_per_fish * quantity
         return total_liters
 
-    def calculate_bioload(self, fish_stock: Dict[str, int]) -> float:
+    def calculate_bioload(self, fish_stock: dict[str, int]) -> float:
         """
         Calculate the total bioload factor for all fish in the stock.
 
@@ -123,7 +121,7 @@ class StockingCalculator:
             total_bioload += fish.bioload_factor * quantity
         return total_bioload
 
-    def get_stocking_recommendations(self, pond_volume_liters: float) -> Dict[str, int]:
+    def get_stocking_recommendations(self, pond_volume_liters: float) -> dict[str, int]:
         """
         Calculate the maximum number of each fish species that can be stocked in the pond.
 
@@ -176,7 +174,7 @@ class StockingCalculator:
         return recommendations
 
     def validate_stocking(
-        self, fish_stock: Dict[str, int], pond_volume_liters: float
+        self, fish_stock: dict[str, int], pond_volume_liters: float
     ) -> bool:
         """
         Validate if the current stocking level is within the pond's capacity.
@@ -210,6 +208,8 @@ class StockingCalculator:
             >>> if not is_adequate:
             ...     print("Warning: Pond may be overstocked")
         """
+        required_volume = self.calculate_required_volume(fish_stock)
+        return pond_volume_liters >= required_volume
         required_volume = self.calculate_required_volume(fish_stock)
         return pond_volume_liters >= required_volume
         return pond_volume_liters >= required_volume

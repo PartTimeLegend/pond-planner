@@ -1,5 +1,3 @@
-from typing import Dict
-
 from interfaces.DataRepository import DataRepository
 from interfaces.TransactionManager import TransactionManager
 from interfaces.ValidationService import ValidationService
@@ -8,7 +6,6 @@ from interfaces.ValidationService import ValidationService
 class PondStockManager:
     """
     Manages fish stock operations with validation and transaction support.
-    Follows SOLID principles and ACID properties.
     """
 
     def __init__(
@@ -28,7 +25,7 @@ class PondStockManager:
         self._fish_repository = fish_repository
         self._validation_service = validation_service
         self._transaction_manager = transaction_manager
-        self._fish_stock: Dict[str, int] = {}
+        self._fish_stock: dict[str, int] = {}
 
     def add_fish(self, fish_type: str, quantity: int) -> None:
         """
@@ -129,7 +126,7 @@ class PondStockManager:
 
         self._transaction_manager.execute_transaction(_remove_operation)
 
-    def bulk_add_fish(self, fish_additions: Dict[str, int]) -> None:
+    def bulk_add_fish(self, fish_additions: dict[str, int]) -> None:
         """
         Add multiple fish types in a single transaction ensuring Atomicity.
 
@@ -190,7 +187,7 @@ class PondStockManager:
 
         self._transaction_manager.execute_transaction(_bulk_add_operation)
 
-    def get_stock(self) -> Dict[str, int]:
+    def get_stock(self) -> dict[str, int]:
         """
         Get a defensive copy of the current fish stock.
 
@@ -282,4 +279,6 @@ class PondStockManager:
             >>> else:
             ...     print("No goldfish currently stocked")
         """
+        return fish_type.lower() in self._fish_stock
+        return fish_type.lower() in self._fish_stock
         return fish_type.lower() in self._fish_stock

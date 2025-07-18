@@ -1,5 +1,3 @@
-from typing import Dict
-
 from calculators.EquipmentCalculator import EquipmentCalculator
 from calculators.StockingCalculator import StockingCalculator
 from calculators.VolumeCalculator import VolumeCalculator
@@ -12,7 +10,6 @@ from repositories.YamlShapeRepository import YamlShapeRepository
 class ReportGenerator:
     """
     Generates comprehensive pond planning reports.
-    Follows Single Responsibility Principle by focusing on report generation.
     """
 
     def __init__(
@@ -31,7 +28,7 @@ class ReportGenerator:
         self._volume_calculator = VolumeCalculator(self._shape_repository)
 
     def generate_comprehensive_report(
-        self, dimensions: PondDimensions, fish_stock: Dict[str, int]
+        self, dimensions: PondDimensions, fish_stock: dict[str, int]
     ) -> str:
         """
         Generate a comprehensive pond planning report.
@@ -81,13 +78,13 @@ class ReportGenerator:
         self,
         dimensions: PondDimensions,
         volume: float,
-        fish_stock: Dict[str, int],
+        fish_stock: dict[str, int],
         required_volume: float,
         bioload: float,
         pump_lph: int,
         pump_category: str,
-        filter_specs: Dict[str, str],
-        recommendations: Dict[str, int],
+        filter_specs: dict[str, str],
+        recommendations: dict[str, int],
     ) -> str:
         """
         Format the report with all calculated data.

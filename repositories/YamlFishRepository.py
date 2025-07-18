@@ -1,5 +1,4 @@
 import os
-from typing import Dict
 
 import yaml
 
@@ -25,7 +24,7 @@ class YamlFishRepository(DataRepository):
             yaml_file_path = os.path.join(script_dir, "fish_database.yaml")
 
         self._yaml_file_path = yaml_file_path
-        self._fish_cache: Dict[str, Fish] = {}
+        self._fish_cache: dict[str, Fish] = {}
         self._load_fish_data()
 
     def _load_fish_data(self) -> None:
@@ -39,7 +38,7 @@ class YamlFishRepository(DataRepository):
             ValueError: If fish data contains invalid values
         """
         try:
-            with open(self._yaml_file_path, "r", encoding="utf-8") as file:
+            with open(self._yaml_file_path, encoding="utf-8") as file:
                 data = yaml.safe_load(file)
 
             self._fish_cache.clear()
@@ -86,7 +85,7 @@ class YamlFishRepository(DataRepository):
         except (KeyError, ValueError) as e:
             raise ValueError(f"Invalid fish data: {e}") from e
 
-    def get_all_fish(self) -> Dict[str, Fish]:
+    def get_all_fish(self) -> dict[str, Fish]:
         """
         Retrieve a copy of all fish data from the repository.
 
@@ -136,4 +135,5 @@ class YamlFishRepository(DataRepository):
         Returns:
             list[str]: A sorted list of fish keys (identifiers) available in the repository.
         """
+        return sorted(self._fish_cache.keys())
         return sorted(self._fish_cache.keys())

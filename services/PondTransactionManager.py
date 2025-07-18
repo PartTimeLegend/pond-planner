@@ -1,5 +1,5 @@
 import copy
-from typing import Any, Callable, Dict, TypeVar
+from typing import Any, Callable, TypeVar
 
 from interfaces.TransactionManager import TransactionManager
 
@@ -54,7 +54,7 @@ class PondTransactionManager(TransactionManager):
             _transaction_stack (list): Stack to manage nested transactions.
         """
         self._transaction_active = False
-        self._rollback_data: Dict[str, Any] = {}
+        self._rollback_data: dict[str, Any] = {}
         self._transaction_stack = []
 
     def execute_transaction(self, operation: Callable[[], T]) -> T:

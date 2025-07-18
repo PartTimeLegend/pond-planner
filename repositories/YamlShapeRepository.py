@@ -1,5 +1,5 @@
 import os
-from typing import Any, Dict, List
+from typing import Any
 
 import yaml
 
@@ -24,9 +24,9 @@ class YamlShapeRepository(ShapeRepository):
             yaml_file_path = os.path.join(script_dir, "pond_shapes.yaml")
 
         self._yaml_file_path = yaml_file_path
-        self._shapes_cache: Dict[str, Dict[str, Any]] = {}
-        self._categories_cache: Dict[str, List[str]] = {}
-        self._validation_rules: Dict[str, Any] = {}
+        self._shapes_cache: dict[str, dict[str, Any]] = {}
+        self._categories_cache: dict[str, list[str]] = {}
+        self._validation_rules: dict[str, Any] = {}
         self._load_shape_data()
 
     def _load_shape_data(self) -> None:
@@ -39,7 +39,7 @@ class YamlShapeRepository(ShapeRepository):
             KeyError: If required shape data fields are missing
         """
         try:
-            with open(self._yaml_file_path, "r", encoding="utf-8") as file:
+            with open(self._yaml_file_path, encoding="utf-8") as file:
                 data = yaml.safe_load(file)
 
             self._shapes_cache = data["pond_shapes"]
@@ -55,11 +55,11 @@ class YamlShapeRepository(ShapeRepository):
         except KeyError as e:
             raise KeyError(f"Missing required field in pond shapes data: {e}") from e
 
-    def get_all_shapes(self) -> Dict[str, Dict[str, Any]]:
+    def get_all_shapes(self) -> dict[str, dict[str, Any]]:
         """Get all available pond shapes with their properties."""
         return self._shapes_cache.copy()
 
-    def get_shape_by_key(self, shape_key: str) -> Dict[str, Any]:
+    def get_shape_by_key(self, shape_key: str) -> dict[str, Any]:
         """
         Get a specific shape by its key.
 
@@ -87,7 +87,7 @@ class YamlShapeRepository(ShapeRepository):
         """
         return shape_key.lower() in self._shapes_cache
 
-    def get_shape_keys(self) -> List[str]:
+    def get_shape_keys(self) -> list[str]:
         """
         Retrieve all available shape keys from the repository.
 
@@ -98,7 +98,7 @@ class YamlShapeRepository(ShapeRepository):
         # Return a sorted list of shape keys
         return sorted(self._shapes_cache.keys())
 
-    def get_shapes_by_category(self, category: str) -> List[str]:
+    def get_shapes_by_category(self, category: str) -> list[str]:
         """
         Retrieve a list of shape names for a given category.
         Args:
@@ -109,7 +109,7 @@ class YamlShapeRepository(ShapeRepository):
         """
         return self._categories_cache.get(category.lower(), [])
 
-    def get_validation_rules(self) -> Dict[str, Any]:
+    def get_validation_rules(self) -> dict[str, Any]:
         """Get validation rules for pond dimensions.
         Returns:
             Dict[str, Any]: A copy of the validation rules dictionary.

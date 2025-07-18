@@ -1,5 +1,3 @@
-from typing import Dict, List
-
 from interfaces.ShapeRepository import ShapeRepository
 from interfaces.ValidationService import ValidationService
 
@@ -7,7 +5,6 @@ from interfaces.ValidationService import ValidationService
 class PondValidationService(ValidationService):
     """
     Concrete implementation of validation service for pond planning.
-    Uses shape repository for extensible validation rules.
     """
 
     def __init__(self, shape_repository: ShapeRepository = None):
@@ -27,7 +24,7 @@ class PondValidationService(ValidationService):
 
     def validate_dimensions(
         self, length: float, width: float, depth: float
-    ) -> List[str]:
+    ) -> list[str]:
         """
         Validate pond dimensions using repository rules.
         Args:
@@ -60,7 +57,7 @@ class PondValidationService(ValidationService):
 
         return errors
 
-    def validate_fish_quantity(self, quantity: int) -> List[str]:
+    def validate_fish_quantity(self, quantity: int) -> list[str]:
         """
         Validate fish quantity for stocking.
         Args:
@@ -77,7 +74,7 @@ class PondValidationService(ValidationService):
 
         return errors
 
-    def validate_pond_shape(self, shape: str) -> List[str]:
+    def validate_pond_shape(self, shape: str) -> list[str]:
         """
         Validate pond shape using repository data.
         Args:
@@ -97,7 +94,7 @@ class PondValidationService(ValidationService):
 
         return errors
 
-    def validate_fish_stock_data(self, fish_stock: Dict[str, int]) -> List[str]:
+    def validate_fish_stock_data(self, fish_stock: dict[str, int]) -> list[str]:
         """
         Validate entire fish stock data.
         Args:
@@ -122,4 +119,6 @@ class PondValidationService(ValidationService):
                 quantity_errors = self.validate_fish_quantity(quantity)
                 errors.extend([f"{fish_type}: {error}" for error in quantity_errors])
 
+        return errors
+        return errors
         return errors

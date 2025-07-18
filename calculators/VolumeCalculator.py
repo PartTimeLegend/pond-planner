@@ -1,5 +1,5 @@
 import math
-from typing import Any, Dict
+from typing import Any
 
 from interfaces.ShapeRepository import ShapeRepository
 from PondDimensions import PondDimensions
@@ -142,7 +142,7 @@ class VolumeCalculator:
 
     def _calculate_volume_by_shape_config(
         self,
-        shape_config: Dict[str, Any],
+        shape_config: dict[str, Any],
         length: float,
         width: float,
         depth: float,

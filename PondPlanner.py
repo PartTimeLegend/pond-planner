@@ -1,7 +1,5 @@
 # hexagonal, octagonal, irregular
 
-from typing import Dict, List, Tuple
-
 from calculators.EquipmentCalculator import EquipmentCalculator
 from calculators.StockingCalculator import StockingCalculator
 from calculators.VolumeCalculator import VolumeCalculator
@@ -114,7 +112,7 @@ class PondPlanner:
 
         self._transaction_manager.execute_transaction(_set_dimensions_operation)
 
-    def add_fish_batch(self, fish_batch: Dict[str, int]) -> None:
+    def add_fish_batch(self, fish_batch: dict[str, int]) -> None:
         """
         Add multiple fish types in a single atomic operation.
 
@@ -170,12 +168,12 @@ class PondPlanner:
 
     # Properties for accessing internal state (following encapsulation)
     @property
-    def fish_stock(self) -> Dict[str, int]:
+    def fish_stock(self) -> dict[str, int]:
         """Get current fish stock (read-only)."""
         return self._stock_manager.get_stock()
 
     @property
-    def fish_database(self) -> Dict[str, any]:
+    def fish_database(self) -> dict[str, any]:
         """
         Get fish database for backwards compatibility.
 
@@ -315,7 +313,7 @@ class PondPlanner:
             self._stock_manager.get_stock()
         )
 
-    def calculate_pump_size(self) -> Tuple[int, str]:
+    def calculate_pump_size(self) -> tuple[int, str]:
         """
         Calculate the required pump size for the pond based on volume and bioload.
 
@@ -351,7 +349,7 @@ class PondPlanner:
         bioload = self.calculate_bioload()
         return EquipmentCalculator.calculate_pump_size(volume, bioload)
 
-    def calculate_filter_size(self) -> Dict[str, str]:
+    def calculate_filter_size(self) -> dict[str, str]:
         """
         Calculate the required filtration system specifications based on pond volume and bioload.
 
@@ -386,7 +384,7 @@ class PondPlanner:
         bioload = self.calculate_bioload()
         return EquipmentCalculator.calculate_filter_specifications(volume, bioload)
 
-    def get_stocking_recommendations(self) -> Dict[str, int]:
+    def get_stocking_recommendations(self) -> dict[str, int]:
         """
         Calculate the maximum number of each fish type that can be stocked in the pond.
 
@@ -422,7 +420,7 @@ class PondPlanner:
         volume = self.calculate_volume_liters()
         return self._stocking_calculator.get_stocking_recommendations(volume)
 
-    def get_available_shapes(self) -> List[str]:
+    def get_available_shapes(self) -> list[str]:
         """
         Get a list of all available pond shapes from the shape repository.
 
@@ -451,7 +449,7 @@ class PondPlanner:
         """
         return self._shape_repository.get_shape_keys()
 
-    def get_shapes_by_category(self, category: str) -> List[str]:
+    def get_shapes_by_category(self, category: str) -> list[str]:
         """
         Get shapes belonging to a specific category from the shape repository.
 
@@ -480,7 +478,7 @@ class PondPlanner:
         """
         return self._shape_repository.get_shapes_by_category(category)
 
-    def get_fish_types_list(self) -> List[str]:
+    def get_fish_types_list(self) -> list[str]:
         """
         Get a sorted list of all available fish type identifiers from the fish database.
 

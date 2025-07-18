@@ -1,6 +1,3 @@
-from typing import Dict, Tuple
-
-
 class EquipmentCalculator:
     """
     Handles equipment sizing calculations for pond systems.
@@ -10,7 +7,7 @@ class EquipmentCalculator:
     @staticmethod
     def calculate_pump_size(
         pond_volume_liters: float, bioload: float
-    ) -> Tuple[int, str]:
+    ) -> tuple[int, str]:
         """
         Calculate the required pump size based on volume and bioload.
 
@@ -46,7 +43,7 @@ class EquipmentCalculator:
     @staticmethod
     def calculate_filter_specifications(
         pond_volume_liters: float, bioload: float
-    ) -> Dict[str, str]:
+    ) -> dict[str, str]:
         """
         Calculate filtration system specifications.
 

@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from typing import Dict
 
 from Fish import Fish
 
@@ -12,7 +11,7 @@ class DataRepository(ABC):
     """
 
     @abstractmethod
-    def get_all_fish(self) -> Dict[str, Fish]:
+    def get_all_fish(self) -> dict[str, Fish]:
         """Get all available fish with their properties."""
 
     @abstractmethod
@@ -25,4 +24,5 @@ class DataRepository(ABC):
 
     @abstractmethod
     def get_fish_keys(self) -> list[str]:
+        """Get all available fish keys."""
         """Get all available fish keys."""
