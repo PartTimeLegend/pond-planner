@@ -1,6 +1,8 @@
 import os
+from typing import Any, Dict, List
+
 import yaml
-from typing import Dict, List, Any
+
 from interfaces.ShapeRepository import ShapeRepository
 
 
@@ -19,7 +21,7 @@ class YamlShapeRepository(ShapeRepository):
         """
         if yaml_file_path is None:
             script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            yaml_file_path = os.path.join(script_dir, 'pond_shapes.yaml')
+            yaml_file_path = os.path.join(script_dir, "pond_shapes.yaml")
 
         self._yaml_file_path = yaml_file_path
         self._shapes_cache: Dict[str, Dict[str, Any]] = {}
@@ -37,19 +39,21 @@ class YamlShapeRepository(ShapeRepository):
             KeyError: If required shape data fields are missing
         """
         try:
-            with open(self._yaml_file_path, 'r', encoding='utf-8') as file:
+            with open(self._yaml_file_path, "r", encoding="utf-8") as file:
                 data = yaml.safe_load(file)
 
-            self._shapes_cache = data['pond_shapes']
-            self._categories_cache = data.get('shape_categories', {})
-            self._validation_rules = data.get('validation_rules', {})
+            self._shapes_cache = data["pond_shapes"]
+            self._categories_cache = data.get("shape_categories", {})
+            self._validation_rules = data.get("validation_rules", {})
 
-        except FileNotFoundError:
-            raise FileNotFoundError(f"Pond shapes file not found: {self._yaml_file_path}")
+        except FileNotFoundError as exc:
+            raise FileNotFoundError(
+                f"Pond shapes file not found: {self._yaml_file_path}"
+            ) from exc
         except yaml.YAMLError as e:
-            raise yaml.YAMLError(f"Error parsing pond shapes YAML file: {e}")
+            raise yaml.YAMLError(f"Error parsing pond shapes YAML file: {e}") from e
         except KeyError as e:
-            raise KeyError(f"Missing required field in pond shapes data: {e}")
+            raise KeyError(f"Missing required field in pond shapes data: {e}") from e
 
     def get_all_shapes(self) -> Dict[str, Dict[str, Any]]:
         """Get all available pond shapes with their properties."""

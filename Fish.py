@@ -22,7 +22,7 @@ class Fish:
     min_liters_per_fish: int
 
     @classmethod
-    def from_dict(cls, data: dict) -> 'Fish':
+    def from_dict(cls, data: dict) -> "Fish":
         """
         Create a Fish instance from a dictionary of data.
 
@@ -34,8 +34,8 @@ class Fish:
             Fish: A new Fish instance created from the provided data
         """
         return cls(
-            name=data['name'],
-            adult_length_cm=data['adult_length_cm'],
-            bioload_factor=data['bioload_factor'],
-            min_liters_per_fish=data['min_liters_per_fish']
+            name=data["name"],
+            adult_length_cm=data["adult_length_cm"],
+            bioload_factor=data["bioload_factor"],
+            min_liters_per_fish=data["min_liters_per_fish"],
         )

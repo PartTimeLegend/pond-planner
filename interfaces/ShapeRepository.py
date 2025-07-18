@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 
 class ShapeRepository(ABC):
@@ -15,7 +15,6 @@ class ShapeRepository(ABC):
     @abstractmethod
     def get_shape_by_key(self, shape_key: str) -> Dict[str, Any]:
         """Get a specific shape by its key."""
-
 
     @abstractmethod
     def shape_exists(self, shape_key: str) -> bool:

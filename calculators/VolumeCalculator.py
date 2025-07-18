@@ -1,7 +1,8 @@
 import math
-from typing import Dict, Any
-from PondDimensions import PondDimensions
+from typing import Any, Dict
+
 from interfaces.ShapeRepository import ShapeRepository
+from PondDimensions import PondDimensions
 
 
 class VolumeCalculator:
@@ -133,17 +134,11 @@ class VolumeCalculator:
             )
 
         if dimensions.length_meters > max_dims.get("length", float("inf")):
-            raise ValueError(
-                f"Length cannot exceed {max_dims.get('length')} meters"
-            )
+            raise ValueError(f"Length cannot exceed {max_dims.get('length')} meters")
         if dimensions.width_meters > max_dims.get("width", float("inf")):
-            raise ValueError(
-                f"Width cannot exceed {max_dims.get('width')} meters"
-            )
+            raise ValueError(f"Width cannot exceed {max_dims.get('width')} meters")
         if dimensions.avg_depth_meters > max_dims.get("depth", float("inf")):
-            raise ValueError(
-                f"Depth cannot exceed {max_dims.get('depth')} meters"
-            )
+            raise ValueError(f"Depth cannot exceed {max_dims.get('depth')} meters")
 
     def _calculate_volume_by_shape_config(
         self,

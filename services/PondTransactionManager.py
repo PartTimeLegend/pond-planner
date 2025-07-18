@@ -1,8 +1,9 @@
 import copy
-from typing import Any, Callable, TypeVar, Dict
+from typing import Any, Callable, Dict, TypeVar
+
 from interfaces.TransactionManager import TransactionManager
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class PondTransactionManager(TransactionManager):
@@ -123,7 +124,7 @@ class PondTransactionManager(TransactionManager):
             raise e
 
     def begin_transaction(self) -> None:
-        """ Begin a new transaction.
+        """Begin a new transaction.
         This method starts a new transaction context. If a transaction is already active,
         it raises a RuntimeError. The transaction state is set to active, and any previous
         rollback data is cleared to ensure a clean state for the new transaction.

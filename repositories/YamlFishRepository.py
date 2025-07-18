@@ -1,6 +1,8 @@
 import os
-import yaml
 from typing import Dict
+
+import yaml
+
 from Fish import Fish
 from interfaces.DataRepository import DataRepository
 
@@ -20,7 +22,7 @@ class YamlFishRepository(DataRepository):
         """
         if yaml_file_path is None:
             script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            yaml_file_path = os.path.join(script_dir, 'fish_database.yaml')
+            yaml_file_path = os.path.join(script_dir, "fish_database.yaml")
 
         self._yaml_file_path = yaml_file_path
         self._fish_cache: Dict[str, Fish] = {}
@@ -37,33 +39,50 @@ class YamlFishRepository(DataRepository):
             ValueError: If fish data contains invalid values
         """
         try:
-            with open(self._yaml_file_path, 'r', encoding='utf-8') as file:
+            with open(self._yaml_file_path, "r", encoding="utf-8") as file:
                 data = yaml.safe_load(file)
 
             self._fish_cache.clear()
-            for fish_key, fish_data in data['fish_species'].items():
+            for fish_key, fish_data in data["fish_species"].items():
                 # Validate required fields
-                required_fields = ['name', 'adult_length_cm', 'bioload_factor', 'min_liters_per_fish']
+                required_fields = [
+                    "name",
+                    "adult_length_cm",
+                    "bioload_factor",
+                    "min_liters_per_fish",
+                ]
                 for field in required_fields:
                     if field not in fish_data:
-                        raise KeyError(f"Missing required field '{field}' for fish '{fish_key}'")
+                        raise KeyError(
+                            f"Missing required field '{field}' for fish '{fish_key}'"
+                        )
                     if fish_data[field] is None:
-                        raise ValueError(f"Field '{field}' cannot be None for fish '{fish_key}'")
+                        raise ValueError(
+                            f"Field '{field}' cannot be None for fish '{fish_key}'"
+                        )
 
                 # Validate numeric fields
-                if fish_data['adult_length_cm'] <= 0:
-                    raise ValueError(f"adult_length_cm must be positive for fish '{fish_key}'")
-                if fish_data['bioload_factor'] <= 0:
-                    raise ValueError(f"bioload_factor must be positive for fish '{fish_key}'")
-                if fish_data['min_liters_per_fish'] <= 0:
-                    raise ValueError(f"min_liters_per_fish must be positive for fish '{fish_key}'")
+                if fish_data["adult_length_cm"] <= 0:
+                    raise ValueError(
+                        f"adult_length_cm must be positive for fish '{fish_key}'"
+                    )
+                if fish_data["bioload_factor"] <= 0:
+                    raise ValueError(
+                        f"bioload_factor must be positive for fish '{fish_key}'"
+                    )
+                if fish_data["min_liters_per_fish"] <= 0:
+                    raise ValueError(
+                        f"min_liters_per_fish must be positive for fish '{fish_key}'"
+                    )
 
                 self._fish_cache[fish_key] = Fish.from_dict(fish_data)
 
         except FileNotFoundError as exc:
-            raise FileNotFoundError(f"Fish database file not found: {self._yaml_file_path}") from exc
+            raise FileNotFoundError(
+                f"Fish database file not found: {self._yaml_file_path}"
+            ) from exc
         except yaml.YAMLError as e:
-            raise yaml.YAMLError(f"Error parsing YAML file: {e}")
+            raise yaml.YAMLError(f"Error parsing YAML file: {e}") from e
         except (KeyError, ValueError) as e:
             raise ValueError(f"Invalid fish data: {e}") from e
 

@@ -8,7 +8,9 @@ class EquipmentCalculator:
     """
 
     @staticmethod
-    def calculate_pump_size(pond_volume_liters: float, bioload: float) -> Tuple[int, str]:
+    def calculate_pump_size(
+        pond_volume_liters: float, bioload: float
+    ) -> Tuple[int, str]:
         """
         Calculate the required pump size based on volume and bioload.
 
@@ -42,7 +44,9 @@ class EquipmentCalculator:
         return required_lph, category
 
     @staticmethod
-    def calculate_filter_specifications(pond_volume_liters: float, bioload: float) -> Dict[str, str]:
+    def calculate_filter_specifications(
+        pond_volume_liters: float, bioload: float
+    ) -> Dict[str, str]:
         """
         Calculate filtration system specifications.
 
@@ -63,11 +67,11 @@ class EquipmentCalculator:
         bio_filter_liters = int(pond_volume_liters * bio_filter_percent / 100)
 
         # UV sterilizer wattage (varies with bioload)
-        uv_watts_per_liter = 1/285 if bioload <= 10 else 1/190
+        uv_watts_per_liter = 1 / 285 if bioload <= 10 else 1 / 190
         uv_watts = int(pond_volume_liters * uv_watts_per_liter)
 
         return {
             "biological_filter": f"{bio_filter_liters} liters filter media",
             "uv_sterilizer": f"{uv_watts} watts",
-            "mechanical_filter": "Pre-filter with 50-100 micron capability"
+            "mechanical_filter": "Pre-filter with 50-100 micron capability",
         }

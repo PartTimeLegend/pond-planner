@@ -1,20 +1,21 @@
 # hexagonal, octagonal, irregular
 
 from typing import Dict, List, Tuple
-from PondDimensions import PondDimensions
-from interfaces.DataRepository import DataRepository
-from repositories.YamlFishRepository import YamlFishRepository
-from services.PondStockManager import PondStockManager
-from services.ReportGenerator import ReportGenerator
-from calculators.VolumeCalculator import VolumeCalculator
-from calculators.StockingCalculator import StockingCalculator
+
 from calculators.EquipmentCalculator import EquipmentCalculator
-from interfaces.ValidationService import ValidationService
-from interfaces.TransactionManager import TransactionManager
-from services.PondValidationService import PondValidationService
-from services.PondTransactionManager import PondTransactionManager
+from calculators.StockingCalculator import StockingCalculator
+from calculators.VolumeCalculator import VolumeCalculator
+from interfaces.DataRepository import DataRepository
 from interfaces.ShapeRepository import ShapeRepository
+from interfaces.TransactionManager import TransactionManager
+from interfaces.ValidationService import ValidationService
+from PondDimensions import PondDimensions
+from repositories.YamlFishRepository import YamlFishRepository
 from repositories.YamlShapeRepository import YamlShapeRepository
+from services.PondStockManager import PondStockManager
+from services.PondTransactionManager import PondTransactionManager
+from services.PondValidationService import PondValidationService
+from services.ReportGenerator import ReportGenerator
 
 
 class PondPlanner:
@@ -33,7 +34,7 @@ class PondPlanner:
         fish_repository: DataRepository = None,
         validation_service: ValidationService = None,
         transaction_manager: TransactionManager = None,
-        shape_repository: ShapeRepository = None
+        shape_repository: ShapeRepository = None,
     ):
         """
         Initialize pond planner with optional dependency injection.
@@ -47,23 +48,27 @@ class PondPlanner:
         # Use dependency injection with default fallbacks (Open/Closed Principle)
         self._fish_repository = fish_repository or YamlFishRepository()
         self._shape_repository = shape_repository or YamlShapeRepository()
-        self._validation_service = validation_service or PondValidationService(self._shape_repository)
+        self._validation_service = validation_service or PondValidationService(
+            self._shape_repository
+        )
         self._transaction_manager = transaction_manager or PondTransactionManager()
 
         # Initialize services with proper dependencies
         self._stock_manager = PondStockManager(
-            self._fish_repository,
-            self._validation_service,
-            self._transaction_manager
+            self._fish_repository, self._validation_service, self._transaction_manager
         )
-        self._report_generator = ReportGenerator(self._fish_repository, self._shape_repository)
+        self._report_generator = ReportGenerator(
+            self._fish_repository, self._shape_repository
+        )
         self._stocking_calculator = StockingCalculator(self._fish_repository)
         self._volume_calculator = VolumeCalculator(self._shape_repository)
 
         # Pond state
         self.dimensions: PondDimensions = None
 
-    def set_dimensions(self, length: float, width: float, depth: float, shape: str = "rectangular") -> None:
+    def set_dimensions(
+        self, length: float, width: float, depth: float, shape: str = "rectangular"
+    ) -> None:
         """
         Set the dimensions and shape of the pond with validation and transaction support.
 
@@ -89,9 +94,12 @@ class PondPlanner:
             >>> planner.set_dimensions(5.0, 3.0, 1.5, "rectangular")
             >>> planner.set_dimensions(4.0, 4.0, 2.0, "circular")
         """
+
         def _set_dimensions_operation():
             # Validate all inputs
-            dimension_errors = self._validation_service.validate_dimensions(length, width, depth)
+            dimension_errors = self._validation_service.validate_dimensions(
+                length, width, depth
+            )
             shape_errors = self._validation_service.validate_pond_shape(shape)
 
             all_errors = dimension_errors + shape_errors
@@ -99,7 +107,7 @@ class PondPlanner:
                 raise ValueError(f"Invalid dimensions: {'; '.join(all_errors)}")
 
             # Save current state for rollback
-            self._transaction_manager.save_state('dimensions', self.dimensions)
+            self._transaction_manager.save_state("dimensions", self.dimensions)
 
             # Set new dimensions
             self.dimensions = PondDimensions(length, width, depth, shape)
@@ -160,7 +168,6 @@ class PondPlanner:
 
         return self._volume_calculator.calculate_volume_liters(self.dimensions)
 
-
     # Properties for accessing internal state (following encapsulation)
     @property
     def fish_stock(self) -> Dict[str, int]:
@@ -186,7 +193,6 @@ class PondPlanner:
             consider using the fish repository directly for better separation of concerns.
         """
         return self._fish_repository.get_all_fish()
-
 
     def add_fish(self, fish_type: str, quantity: int):
         """
@@ -273,7 +279,9 @@ class PondPlanner:
             >>> required = planner.calculate_required_volume()
             >>> print(f"Required volume: {required} liters")  # Outputs: 1100.0 liters
         """
-        return self._stocking_calculator.calculate_required_volume(self._stock_manager.get_stock())
+        return self._stocking_calculator.calculate_required_volume(
+            self._stock_manager.get_stock()
+        )
 
     def calculate_bioload(self) -> float:
         """
@@ -303,7 +311,9 @@ class PondPlanner:
             >>> bioload = planner.calculate_bioload()
             >>> print(f"Total bioload: {bioload}")  # Outputs: 10.0
         """
-        return self._stocking_calculator.calculate_bioload(self._stock_manager.get_stock())
+        return self._stocking_calculator.calculate_bioload(
+            self._stock_manager.get_stock()
+        )
 
     def calculate_pump_size(self) -> Tuple[int, str]:
         """
@@ -538,6 +548,5 @@ class PondPlanner:
             ...     f.write(report)
         """
         return self._report_generator.generate_comprehensive_report(
-            self.dimensions,
-            self._stock_manager.get_stock()
+            self.dimensions, self._stock_manager.get_stock()
         )

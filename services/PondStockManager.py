@@ -1,7 +1,8 @@
 from typing import Dict
+
 from interfaces.DataRepository import DataRepository
-from interfaces.ValidationService import ValidationService
 from interfaces.TransactionManager import TransactionManager
+from interfaces.ValidationService import ValidationService
 
 
 class PondStockManager:
@@ -14,7 +15,7 @@ class PondStockManager:
         self,
         fish_repository: DataRepository,
         validation_service: ValidationService,
-        transaction_manager: TransactionManager
+        transaction_manager: TransactionManager,
     ):
         """
         Initialize with dependencies (Dependency Inversion Principle).
@@ -58,6 +59,7 @@ class PondStockManager:
             >>> manager.add_fish("goldfish", 5)
             >>> manager.add_fish("KOI", 2)  # Case-insensitive
         """
+
         def _add_operation():
             # Validate inputs
             quantity_errors = self._validation_service.validate_fish_quantity(quantity)
@@ -69,7 +71,7 @@ class PondStockManager:
                 raise ValueError(f"Unknown fish type: {fish_type}")
 
             # Save current state for potential rollback
-            self._transaction_manager.save_state('fish_stock', self._fish_stock)
+            self._transaction_manager.save_state("fish_stock", self._fish_stock)
 
             # Perform operation
             self._fish_stock[fish_key] = self._fish_stock.get(fish_key, 0) + quantity
@@ -104,6 +106,7 @@ class PondStockManager:
             >>> manager.remove_fish("goldfish", 2)
             >>> manager.remove_fish("koi", 100)  # Removes all if < 100 in stock
         """
+
         def _remove_operation():
             # Validate inputs
             quantity_errors = self._validation_service.validate_fish_quantity(quantity)
@@ -115,7 +118,7 @@ class PondStockManager:
                 return  # Nothing to remove
 
             # Save current state for potential rollback
-            self._transaction_manager.save_state('fish_stock', self._fish_stock)
+            self._transaction_manager.save_state("fish_stock", self._fish_stock)
 
             # Perform operation
             new_quantity = max(0, self._fish_stock[fish_key] - quantity)
@@ -161,9 +164,12 @@ class PondStockManager:
             ... }
             >>> manager.bulk_add_fish(batch)
         """
+
         def _bulk_add_operation():
             # Validate all data first (fail fast)
-            stock_errors = self._validation_service.validate_fish_stock_data(fish_additions)
+            stock_errors = self._validation_service.validate_fish_stock_data(
+                fish_additions
+            )
             if stock_errors:
                 raise ValueError(f"Invalid fish stock data: {'; '.join(stock_errors)}")
 
@@ -173,12 +179,14 @@ class PondStockManager:
                     raise ValueError(f"Unknown fish type: {fish_type}")
 
             # Save current state
-            self._transaction_manager.save_state('fish_stock', self._fish_stock)
+            self._transaction_manager.save_state("fish_stock", self._fish_stock)
 
             # Perform all additions
             for fish_type, quantity in fish_additions.items():
                 fish_key = fish_type.lower()
-                self._fish_stock[fish_key] = self._fish_stock.get(fish_key, 0) + quantity
+                self._fish_stock[fish_key] = (
+                    self._fish_stock.get(fish_key, 0) + quantity
+                )
 
         self._transaction_manager.execute_transaction(_bulk_add_operation)
 

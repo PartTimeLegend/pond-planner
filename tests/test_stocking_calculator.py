@@ -1,5 +1,7 @@
-import pytest
 from unittest.mock import Mock
+
+import pytest
+
 from calculators.StockingCalculator import StockingCalculator
 from Fish import Fish
 
@@ -21,7 +23,7 @@ class TestStockingCalculator:
         self.mock_fish_repo.get_all_fish.return_value = {
             "goldfish": self.goldfish,
             "koi": self.koi,
-            "shubunkin": self.shubunkin
+            "shubunkin": self.shubunkin,
         }
 
         self.calculator = StockingCalculator(self.mock_fish_repo)
@@ -31,7 +33,7 @@ class TestStockingCalculator:
         fish_map = {
             "goldfish": self.goldfish,
             "koi": self.koi,
-            "shubunkin": self.shubunkin
+            "shubunkin": self.shubunkin,
         }
         if key in fish_map:
             return fish_map[key]
@@ -81,7 +83,9 @@ class TestStockingCalculator:
 
         stock = {"invalid_fish": 5}
 
-        with pytest.raises(ValueError, match="invalid min_liters_per_fish value \\(None\\)"):
+        with pytest.raises(
+            ValueError, match="invalid min_liters_per_fish value \\(None\\)"
+        ):
             self.calculator.calculate_required_volume(stock)
 
     def test_calculate_bioload_empty_stock(self):
@@ -121,9 +125,9 @@ class TestStockingCalculator:
         result = self.calculator.get_stocking_recommendations(5000.0)
 
         expected = {
-            "Goldfish": 66,      # 5000 / 75 = 66.67 → 66
-            "Koi": 5,            # 5000 / 950 = 5.26 → 5
-            "Shubunkin": 26      # 5000 / 190 = 26.31 → 26
+            "Goldfish": 66,  # 5000 / 75 = 66.67 → 66
+            "Koi": 5,  # 5000 / 950 = 5.26 → 5
+            "Shubunkin": 26,  # 5000 / 190 = 26.31 → 26
         }
 
         assert result == expected
@@ -144,7 +148,7 @@ class TestStockingCalculator:
         invalid_fish = Fish("Invalid", 20, 1.0, None)
         self.mock_fish_repo.get_all_fish.return_value = {
             "goldfish": self.goldfish,
-            "invalid_fish": invalid_fish
+            "invalid_fish": invalid_fish,
         }
 
         result = self.calculator.get_stocking_recommendations(1000.0)
@@ -156,7 +160,7 @@ class TestStockingCalculator:
     def test_validate_stocking_adequate(self):
         """Test stocking validation when pond is adequate."""
         stock = {"goldfish": 5}  # Requires 375L
-        pond_volume = 500.0      # Adequate
+        pond_volume = 500.0  # Adequate
 
         result = self.calculator.validate_stocking(stock, pond_volume)
         assert result is True
@@ -164,7 +168,7 @@ class TestStockingCalculator:
     def test_validate_stocking_overstocked(self):
         """Test stocking validation when pond is overstocked."""
         stock = {"goldfish": 10}  # Requires 750L
-        pond_volume = 500.0       # Inadequate
+        pond_volume = 500.0  # Inadequate
 
         result = self.calculator.validate_stocking(stock, pond_volume)
         assert result is False
@@ -172,7 +176,7 @@ class TestStockingCalculator:
     def test_validate_stocking_exact_capacity(self):
         """Test stocking validation at exact capacity."""
         stock = {"goldfish": 5}  # Requires 375L
-        pond_volume = 375.0      # Exact match
+        pond_volume = 375.0  # Exact match
 
         result = self.calculator.validate_stocking(stock, pond_volume)
         assert result is True

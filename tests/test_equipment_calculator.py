@@ -1,4 +1,5 @@
 import pytest
+
 from calculators.EquipmentCalculator import EquipmentCalculator
 
 

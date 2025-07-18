@@ -1,6 +1,8 @@
-import pytest
 import math
 from unittest.mock import Mock
+
+import pytest
+
 from calculators.VolumeCalculator import VolumeCalculator
 from PondDimensions import PondDimensions
 
@@ -14,8 +16,8 @@ class TestVolumeCalculator:
         self.mock_shape_repo = Mock()
         self.mock_shape_repo.shape_exists.return_value = True
         self.mock_shape_repo.get_validation_rules.return_value = {
-            'min_dimensions': {'length': 0.1, 'width': 0.1, 'depth': 0.05},
-            'max_dimensions': {'length': 1000.0, 'width': 1000.0, 'depth': 100.0}
+            "min_dimensions": {"length": 0.1, "width": 0.1, "depth": 0.05},
+            "max_dimensions": {"length": 1000.0, "width": 1000.0, "depth": 100.0},
         }
 
         self.calculator = VolumeCalculator(self.mock_shape_repo)
@@ -23,8 +25,8 @@ class TestVolumeCalculator:
     def test_rectangular_volume(self):
         """Test volume calculation for rectangular pond."""
         self.mock_shape_repo.get_shape_by_key.return_value = {
-            'formula_type': 'simple',
-            'multiplier': 1.0
+            "formula_type": "simple",
+            "multiplier": 1.0,
         }
 
         dimensions = PondDimensions(5.0, 3.0, 1.5, "rectangular")
@@ -36,8 +38,8 @@ class TestVolumeCalculator:
     def test_circular_volume(self):
         """Test volume calculation for circular pond."""
         self.mock_shape_repo.get_shape_by_key.return_value = {
-            'formula_type': 'circular',
-            'multiplier': 1.0
+            "formula_type": "circular",
+            "multiplier": 1.0,
         }
 
         dimensions = PondDimensions(0.0, 4.0, 1.0, "circular")  # width = diameter
@@ -50,8 +52,8 @@ class TestVolumeCalculator:
     def test_oval_volume(self):
         """Test volume calculation for oval pond."""
         self.mock_shape_repo.get_shape_by_key.return_value = {
-            'formula_type': 'elliptical',
-            'multiplier': 1.0
+            "formula_type": "elliptical",
+            "multiplier": 1.0,
         }
 
         dimensions = PondDimensions(6.0, 4.0, 1.0, "oval")
@@ -64,8 +66,8 @@ class TestVolumeCalculator:
     def test_triangular_volume(self):
         """Test volume calculation for triangular pond."""
         self.mock_shape_repo.get_shape_by_key.return_value = {
-            'formula_type': 'triangular',
-            'multiplier': 1.0
+            "formula_type": "triangular",
+            "multiplier": 1.0,
         }
 
         dimensions = PondDimensions(6.0, 4.0, 1.0, "triangular")
@@ -77,8 +79,8 @@ class TestVolumeCalculator:
     def test_kidney_volume_with_multiplier(self):
         """Test volume calculation for kidney-shaped pond with multiplier."""
         self.mock_shape_repo.get_shape_by_key.return_value = {
-            'formula_type': 'approximation',
-            'multiplier': 0.75
+            "formula_type": "approximation",
+            "multiplier": 0.75,
         }
 
         dimensions = PondDimensions(5.0, 3.0, 1.0, "kidney")
@@ -90,9 +92,9 @@ class TestVolumeCalculator:
     def test_hexagonal_volume(self):
         """Test volume calculation for hexagonal pond."""
         self.mock_shape_repo.get_shape_by_key.return_value = {
-            'formula_type': 'polygon',
-            'multiplier': 1.0,
-            'area_formula': '(3 * sqrt(3) / 2) * width^2'
+            "formula_type": "polygon",
+            "multiplier": 1.0,
+            "area_formula": "(3 * sqrt(3) / 2) * width^2",
         }
 
         dimensions = PondDimensions(0.0, 2.0, 1.0, "hexagonal")
@@ -146,8 +148,8 @@ class TestVolumeCalculator:
     def test_negative_volume_raises_error(self):
         """Test that negative calculated volume raises ValueError."""
         self.mock_shape_repo.get_shape_by_key.return_value = {
-            'formula_type': 'simple',
-            'multiplier': -1.0  # This would create negative volume
+            "formula_type": "simple",
+            "multiplier": -1.0,  # This would create negative volume
         }
 
         dimensions = PondDimensions(5.0, 3.0, 1.5, "rectangular")

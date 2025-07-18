@@ -1,4 +1,5 @@
 from typing import Dict
+
 from interfaces.DataRepository import DataRepository
 
 
@@ -58,9 +59,13 @@ class StockingCalculator:
 
             # Defensive check for None values
             if fish.min_liters_per_fish is None:
-                raise ValueError(f"Fish '{fish_type}' has invalid min_liters_per_fish value (None)")
+                raise ValueError(
+                    f"Fish '{fish_type}' has invalid min_liters_per_fish value (None)"
+                )
             if fish.min_liters_per_fish <= 0:
-                raise ValueError(f"Fish '{fish_type}' has invalid min_liters_per_fish value ({fish.min_liters_per_fish})")
+                raise ValueError(
+                    f"Fish '{fish_type}' has invalid min_liters_per_fish value ({fish.min_liters_per_fish})"
+                )
 
             total_liters += fish.min_liters_per_fish * quantity
         return total_liters
@@ -107,9 +112,13 @@ class StockingCalculator:
 
             # Defensive check for None values
             if fish.bioload_factor is None:
-                raise ValueError(f"Fish '{fish_type}' has invalid bioload_factor value (None)")
+                raise ValueError(
+                    f"Fish '{fish_type}' has invalid bioload_factor value (None)"
+                )
             if fish.bioload_factor <= 0:
-                raise ValueError(f"Fish '{fish_type}' has invalid bioload_factor value ({fish.bioload_factor})")
+                raise ValueError(
+                    f"Fish '{fish_type}' has invalid bioload_factor value ({fish.bioload_factor})"
+                )
 
             total_bioload += fish.bioload_factor * quantity
         return total_bioload
@@ -166,7 +175,9 @@ class StockingCalculator:
 
         return recommendations
 
-    def validate_stocking(self, fish_stock: Dict[str, int], pond_volume_liters: float) -> bool:
+    def validate_stocking(
+        self, fish_stock: Dict[str, int], pond_volume_liters: float
+    ) -> bool:
         """
         Validate if the current stocking level is within the pond's capacity.
 

@@ -1,11 +1,12 @@
 from typing import Dict
-from PondDimensions import PondDimensions
+
+from calculators.EquipmentCalculator import EquipmentCalculator
+from calculators.StockingCalculator import StockingCalculator
+from calculators.VolumeCalculator import VolumeCalculator
 from interfaces.DataRepository import DataRepository
 from interfaces.ShapeRepository import ShapeRepository
+from PondDimensions import PondDimensions
 from repositories.YamlShapeRepository import YamlShapeRepository
-from calculators.VolumeCalculator import VolumeCalculator
-from calculators.StockingCalculator import StockingCalculator
-from calculators.EquipmentCalculator import EquipmentCalculator
 
 
 class ReportGenerator:
@@ -14,7 +15,9 @@ class ReportGenerator:
     Follows Single Responsibility Principle by focusing on report generation.
     """
 
-    def __init__(self, fish_repository: DataRepository, shape_repository: ShapeRepository = None):
+    def __init__(
+        self, fish_repository: DataRepository, shape_repository: ShapeRepository = None
+    ):
         """
         Initialize with dependencies.
 
@@ -28,9 +31,7 @@ class ReportGenerator:
         self._volume_calculator = VolumeCalculator(self._shape_repository)
 
     def generate_comprehensive_report(
-        self,
-        dimensions: PondDimensions,
-        fish_stock: Dict[str, int]
+        self, dimensions: PondDimensions, fish_stock: Dict[str, int]
     ) -> str:
         """
         Generate a comprehensive pond planning report.
@@ -47,15 +48,30 @@ class ReportGenerator:
 
         try:
             volume = self._volume_calculator.calculate_volume_liters(dimensions)
-            required_volume = self._stocking_calculator.calculate_required_volume(fish_stock)
+            required_volume = self._stocking_calculator.calculate_required_volume(
+                fish_stock
+            )
             bioload = self._stocking_calculator.calculate_bioload(fish_stock)
-            pump_lph, pump_category = EquipmentCalculator.calculate_pump_size(volume, bioload)
-            filter_specs = EquipmentCalculator.calculate_filter_specifications(volume, bioload)
-            recommendations = self._stocking_calculator.get_stocking_recommendations(volume)
+            pump_lph, pump_category = EquipmentCalculator.calculate_pump_size(
+                volume, bioload
+            )
+            filter_specs = EquipmentCalculator.calculate_filter_specifications(
+                volume, bioload
+            )
+            recommendations = self._stocking_calculator.get_stocking_recommendations(
+                volume
+            )
 
             return self._format_report(
-                dimensions, volume, fish_stock, required_volume, bioload,
-                pump_lph, pump_category, filter_specs, recommendations
+                dimensions,
+                volume,
+                fish_stock,
+                required_volume,
+                bioload,
+                pump_lph,
+                pump_category,
+                filter_specs,
+                recommendations,
             )
 
         except Exception as e:
@@ -71,7 +87,7 @@ class ReportGenerator:
         pump_lph: int,
         pump_category: str,
         filter_specs: Dict[str, str],
-        recommendations: Dict[str, int]
+        recommendations: Dict[str, int],
     ) -> str:
         """
         Format the report with all calculated data.

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Dict
+from typing import Dict, List
 
 
 class ValidationService(ABC):
@@ -9,7 +9,9 @@ class ValidationService(ABC):
     """
 
     @abstractmethod
-    def validate_dimensions(self, length: float, width: float, depth: float) -> List[str]:
+    def validate_dimensions(
+        self, length: float, width: float, depth: float
+    ) -> List[str]:
         """Validate pond dimensions and return list of error messages."""
 
     @abstractmethod

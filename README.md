@@ -198,7 +198,7 @@ pond_shapes:
   your_shape:
     name: "Your Shape"
     description: "Description of your shape"
-    formula_type: "simple"  # or circular, elliptical, etc.
+    formula_type: "simple" # or circular, elliptical, etc.
     area_formula: "length * width"
     multiplier: 1.0
     uses_length: true

@@ -61,9 +61,13 @@ def main():
         fish_types = planner.get_fish_types_list()
         for i, fish_type in enumerate(fish_types, 1):
             fish = planner.fish_database[fish_type]
-            print(f"{i:2d}. {fish_type}: {fish.name} ({fish.min_liters_per_fish} L/fish)")
+            print(
+                f"{i:2d}. {fish_type}: {fish.name} ({fish.min_liters_per_fish} L/fish)"
+            )
 
-        print(f"\nAdd fish to your pond (enter number 1-{len(fish_types)} or fish name):")
+        print(
+            f"\nAdd fish to your pond (enter number 1-{len(fish_types)} or fish name):"
+        )
         print("Press Enter with empty input to finish:")
 
         while True:

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Callable, TypeVar
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class TransactionManager(ABC):

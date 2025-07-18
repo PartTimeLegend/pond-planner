@@ -1,4 +1,5 @@
 import pytest
+
 from PondPlanner import PondPlanner
 
 
@@ -85,11 +86,7 @@ class TestPondPlanner:
 
     def test_add_fish_batch(self):
         """Test adding multiple fish types in a batch."""
-        batch = {
-            "goldfish": 10,
-            "koi": 3,
-            "shubunkin": 5
-        }
+        batch = {"goldfish": 10, "koi": 3, "shubunkin": 5}
 
         self.planner.add_fish_batch(batch)
         stock = self.planner.fish_stock
@@ -101,7 +98,7 @@ class TestPondPlanner:
     def test_calculate_required_volume(self):
         """Test calculating required volume for fish stock."""
         self.planner.add_fish("goldfish", 5)  # 5 × 75L = 375L
-        self.planner.add_fish("koi", 2)       # 2 × 950L = 1900L
+        self.planner.add_fish("koi", 2)  # 2 × 950L = 1900L
 
         required = self.planner.calculate_required_volume()
         assert required == 2275.0  # 375 + 1900
@@ -109,7 +106,7 @@ class TestPondPlanner:
     def test_calculate_bioload(self):
         """Test calculating total bioload."""
         self.planner.add_fish("goldfish", 5)  # 5 × 1.0 = 5.0
-        self.planner.add_fish("koi", 2)       # 2 × 2.5 = 5.0
+        self.planner.add_fish("koi", 2)  # 2 × 2.5 = 5.0
 
         bioload = self.planner.calculate_bioload()
         assert bioload == 10.0

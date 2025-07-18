@@ -1,8 +1,10 @@
-import pytest
 from unittest.mock import Mock
+
+import pytest
+
 from services.PondStockManager import PondStockManager
-from services.PondValidationService import PondValidationService
 from services.PondTransactionManager import PondTransactionManager
+from services.PondValidationService import PondValidationService
 
 
 class TestPondStockManager:
@@ -21,9 +23,7 @@ class TestPondStockManager:
         self.mock_transaction.execute_transaction.side_effect = lambda op: op()
 
         self.manager = PondStockManager(
-            self.mock_fish_repo,
-            self.mock_validation,
-            self.mock_transaction
+            self.mock_fish_repo, self.mock_validation, self.mock_transaction
         )
 
     def test_add_fish_valid(self):
@@ -141,8 +141,8 @@ class TestPondValidationService:
         """Set up test fixtures before each test method."""
         self.mock_shape_repo = Mock()
         self.mock_shape_repo.get_validation_rules.return_value = {
-            'min_dimensions': {'length': 0.1, 'width': 0.1, 'depth': 0.05},
-            'max_dimensions': {'length': 1000.0, 'width': 1000.0, 'depth': 100.0}
+            "min_dimensions": {"length": 0.1, "width": 0.1, "depth": 0.05},
+            "max_dimensions": {"length": 1000.0, "width": 1000.0, "depth": 100.0},
         }
         self.mock_shape_repo.shape_exists.return_value = True
         self.mock_shape_repo.get_shape_keys.return_value = ["rectangular", "circular"]
@@ -222,6 +222,7 @@ class TestPondTransactionManager:
 
     def test_execute_transaction_success(self):
         """Test successful transaction execution."""
+
         def operation():
             return "success"
 
@@ -230,6 +231,7 @@ class TestPondTransactionManager:
 
     def test_execute_transaction_failure_rollback(self):
         """Test transaction rollback on failure."""
+
         def failing_operation():
             raise ValueError("Test error")
 
@@ -254,6 +256,7 @@ class TestPondTransactionManager:
 
     def test_nested_transaction(self):
         """Test nested transaction handling."""
+
         def outer_operation():
             def inner_operation():
                 return "inner_result"
