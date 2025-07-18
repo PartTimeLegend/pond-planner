@@ -22,7 +22,10 @@ class PondDimensions:
         different dimensions (e.g., diameter for circular ponds, or bounding box
         dimensions for irregular shapes).
     """
+
     length_meters: float
     width_meters: float
     avg_depth_meters: float
-    shape: str = "rectangular"  # rectangular, circular, oval, kidney, L-shaped, triangular,
+    shape: str = (
+        "rectangular"  # rectangular, circular, oval, kidney, L-shaped, triangular,
+    )
