@@ -190,7 +190,10 @@ class VolumeCalculator:
             if "hexagonal" in area_formula.lower() or "3 * sqrt(3)" in area_formula:
                 # Hexagonal pond: (3 * sqrt(3) / 2) * width^2
                 area = (3 * math.sqrt(3) / 2) * width * width
-            elif "octagonal" in area_formula.lower() or "2 * (1 + sqrt(2))" in area_formula:
+            elif (
+                "octagonal" in area_formula.lower()
+                or "2 * (1 + sqrt(2))" in area_formula
+            ):
                 # Octagonal pond: 2 * (1 + sqrt(2)) * width^2
                 area = 2 * (1 + math.sqrt(2)) * width * width
             else:
