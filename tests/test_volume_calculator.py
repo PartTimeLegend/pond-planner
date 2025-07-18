@@ -126,7 +126,10 @@ class TestVolumeCalculator:
     def test_validation_unknown_shape(self):
         """Test that unknown shape raises ValueError."""
         dimensions = PondDimensions(5.0, 3.0, 1.5, "unknown")
+
+        # Configure mock to return False for shape_exists and provide shape keys
         self.mock_shape_repo.shape_exists.return_value = False
+        self.mock_shape_repo.get_shape_keys.return_value = ["rectangular", "circular"]
 
         with pytest.raises(ValueError, match="Unknown shape 'unknown'"):
             self.calculator.calculate_volume_liters(dimensions)
