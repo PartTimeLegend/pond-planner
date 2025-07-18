@@ -1,0 +1,4 @@
+[bandit]
+# Exclude test files from assert_used check (B101)
+skips = B101
+exclude_dirs = tests
