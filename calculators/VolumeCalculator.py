@@ -175,6 +175,7 @@ class VolumeCalculator:
         """
         formula_type = shape_config.get("formula_type", "simple")
         multiplier = shape_config.get("multiplier", 1.0)
+        area_formula = shape_config.get("area_formula", "")
 
         if formula_type == "simple":
             area = length * width
@@ -185,14 +186,18 @@ class VolumeCalculator:
         elif formula_type == "triangular":
             area = 0.5 * length * width
         elif formula_type == "polygon":
-            if "hexagonal" in shape_config.get("area_formula", ""):
+            # Handle specific polygon calculations based on area formula
+            if "hexagonal" in area_formula.lower() or "3 * sqrt(3)" in area_formula:
+                # Hexagonal pond: (3 * sqrt(3) / 2) * width^2
                 area = (3 * math.sqrt(3) / 2) * width * width
-            elif "octagonal" in shape_config.get("area_formula", ""):
+            elif "octagonal" in area_formula.lower() or "2 * (1 + sqrt(2))" in area_formula:
+                # Octagonal pond: 2 * (1 + sqrt(2)) * width^2
                 area = 2 * (1 + math.sqrt(2)) * width * width
             else:
-                area = length * width  # fallback
+                # Default polygon fallback
+                area = length * width
         elif formula_type == "approximation":
-            if "pi" in shape_config.get("area_formula", ""):
+            if "pi" in area_formula.lower():
                 area = math.pi * (length / 2) * (width / 2)
             else:
                 area = length * width
