@@ -1,5 +1,5 @@
 # Multi-stage build for pond planner application
-FROM python:3.13-slim AS builder
+FROM python:3.11-slim AS builder
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 # Install system dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    build-essential=12.9ubuntu3 \
+    build-essential=12.9 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -25,13 +25,15 @@ COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
 # Production stage
-FROM python:3.13-slim AS production
+FROM python:3.11-slim as production
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app
+
 # Install runtime dependencies and security updates
 RUN apt-get update && apt-get upgrade -y \
     && apt-get clean \
@@ -45,8 +47,6 @@ RUN groupadd --gid 1000 appuser && \
 WORKDIR /app
 
 # Copy Python packages from builder stage
-COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
-COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 

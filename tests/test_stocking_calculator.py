@@ -79,7 +79,14 @@ class TestStockingCalculator:
         """Test handling of fish with invalid min_liters_per_fish."""
         # Create fish with None value
         invalid_fish = Fish("Invalid", 20, 1.0, None)
-        self.mock_fish_repo.get_fish_by_key.return_value = invalid_fish
+
+        # Update the mock to return invalid fish for specific key
+        def mock_get_fish_by_key(key):
+            if key == "invalid_fish":
+                return invalid_fish
+            return self._get_fish_by_key(key)
+
+        self.mock_fish_repo.get_fish_by_key.side_effect = mock_get_fish_by_key
 
         stock = {"invalid_fish": 5}
 
@@ -113,7 +120,14 @@ class TestStockingCalculator:
         """Test handling of fish with invalid bioload_factor."""
         # Create fish with None value
         invalid_fish = Fish("Invalid", 20, None, 75)
-        self.mock_fish_repo.get_fish_by_key.return_value = invalid_fish
+
+        # Update the mock to return invalid fish for specific key
+        def mock_get_fish_by_key(key):
+            if key == "invalid_fish":
+                return invalid_fish
+            return self._get_fish_by_key(key)
+
+        self.mock_fish_repo.get_fish_by_key.side_effect = mock_get_fish_by_key
 
         stock = {"invalid_fish": 5}
 

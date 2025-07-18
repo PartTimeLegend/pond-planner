@@ -1,6 +1,24 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ]
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^pytest"],
+      "groupName": "pytest packages"
+    },
+    {
+      "matchPackagePatterns": ["^ruff", "^black", "^isort", "^mypy"],
+      "groupName": "code quality tools"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["python"],
+      "allowedVersions": "3.11"
+    }
+  ],
+  "schedule": ["before 4am on Monday"],
+  "timezone": "UTC",
+  "labels": ["dependencies"],
+  "assignees": ["parttimelegend"],
+  "reviewers": ["parttimelegend"]
 }

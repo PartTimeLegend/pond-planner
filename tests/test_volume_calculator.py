@@ -42,7 +42,8 @@ class TestVolumeCalculator:
             "multiplier": 1.0,
         }
 
-        dimensions = PondDimensions(0.0, 4.0, 1.0, "circular")  # width = diameter
+        # Use valid length dimension (circular ponds may still need length >= 0.1)
+        dimensions = PondDimensions(0.1, 4.0, 1.0, "circular")  # width = diameter
         volume = self.calculator.calculate_volume_liters(dimensions)
 
         # π × (4/2)² × 1.0 = π × 4 × 1.0 = 4π m³ ≈ 12,566 liters
@@ -97,7 +98,8 @@ class TestVolumeCalculator:
             "area_formula": "(3 * sqrt(3) / 2) * width^2",
         }
 
-        dimensions = PondDimensions(0.0, 2.0, 1.0, "hexagonal")
+        # Use valid length dimension (hexagonal ponds may still need length >= 0.1)
+        dimensions = PondDimensions(0.1, 2.0, 1.0, "hexagonal")
         volume = self.calculator.calculate_volume_liters(dimensions)
 
         # (3 × √3 / 2) × 2² × 1.0 = 6√3 m³
