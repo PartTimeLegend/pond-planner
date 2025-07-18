@@ -47,7 +47,7 @@ jobs:
     - name: Lint with ruff
       run: |
         # Check for syntax errors and undefined names
-        ruff check . --select=E9,F63,F7,F82 --show-source
+        ruff check . --select=E9,F63,F7,F82 --show-files
         # Check all other linting rules
         ruff check .
 
@@ -162,7 +162,7 @@ jobs:
       uses: aquasecurity/trivy-action@master
       with:
         format: sarif
-        output: 'trivy-results.sarif'
+        output: trivy-results.sarif
 
     - name: Upload Trivy scan results to GitHub Security tab
       if: github.event_name != 'pull_request'
@@ -203,7 +203,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
-        path: './site'
+        path: ./site
 
     - name: Deploy to GitHub Pages
       id: deployment
