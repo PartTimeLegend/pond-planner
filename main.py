@@ -64,7 +64,9 @@ def create_new_pond(planner):
     print("\n" + planner.generate_report())
 
     # Ask if user wants to save
-    save_choice = input("\nWould you like to save this pond plan? (y/n): ").strip().lower()
+    save_choice = (
+        input("\nWould you like to save this pond plan? (y/n): ").strip().lower()
+    )
     if save_choice in ["y", "yes"]:
         save_pond_plan(planner)
 
@@ -113,7 +115,9 @@ def add_fish_to_pond(planner):
                 if fish_input_lower in planner.fish_database:
                     selected_fish = fish_input_lower
                 else:
-                    print("Unknown fish type! Please try again or type 'list' to see all options.")
+                    print(
+                        "Unknown fish type! Please try again or type 'list' to see all options."
+                    )
                     continue
 
             # Get quantity and add fish
@@ -165,7 +169,9 @@ def load_pond_plan(planner):
         for i, pond in enumerate(saved_ponds, 1):
             created_date = pond["created_at"][:10]  # Just the date part
             print(f"{i:2d}. {pond['name']}")
-            print(f"    Shape: {pond['shape']}, Fish: {pond['fish_count']}, Created: {created_date}")
+            print(
+                f"    Shape: {pond['shape']}, Fish: {pond['fish_count']}, Created: {created_date}"
+            )
             if pond["description"]:
                 print(f"    Description: {pond['description']}")
             print()
@@ -202,7 +208,9 @@ def list_saved_ponds(planner):
         for i, pond in enumerate(saved_ponds, 1):
             created_date = pond["created_at"][:10]  # Just the date part
             print(f"{i:2d}. {pond['name']}")
-            print(f"    Shape: {pond['shape']}, Fish: {pond['fish_count']}, Created: {created_date}")
+            print(
+                f"    Shape: {pond['shape']}, Fish: {pond['fish_count']}, Created: {created_date}"
+            )
             if pond["description"]:
                 print(f"    Description: {pond['description']}")
             print(f"    Filename: {pond['filename']}.json")
@@ -231,7 +239,11 @@ def delete_pond_plan(planner):
             index = int(choice) - 1
             if 0 <= index < len(saved_ponds):
                 pond_name = saved_ponds[index]["name"]
-                confirm = input(f"Are you sure you want to delete '{pond_name}'? (y/n): ").strip().lower()
+                confirm = (
+                    input(f"Are you sure you want to delete '{pond_name}'? (y/n): ")
+                    .strip()
+                    .lower()
+                )
                 if confirm in ["y", "yes"]:
                     filename = saved_ponds[index]["filename"]
                     if planner.delete_saved_pond(filename):
@@ -273,7 +285,11 @@ def main():
                     # Show the loaded pond
                     print("\n" + planner.generate_report())
                     # Ask if they want to modify it
-                    modify = input("\nWould you like to add more fish? (y/n): ").strip().lower()
+                    modify = (
+                        input("\nWould you like to add more fish? (y/n): ")
+                        .strip()
+                        .lower()
+                    )
                     if modify in ["y", "yes"]:
                         add_fish_to_pond(planner)
                         print("\n" + planner.generate_report())

@@ -16,8 +16,11 @@ def check_python_version() -> bool:
     if sys.version_info < (3, 11):
         print(f"❌ Python 3.11+ required, found {sys.version}")
         return False
-    print(f"✅ Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}")
+    print(
+        f"✅ Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
+    )
     return True
+
 
 def check_dependencies() -> bool:
     """Check if required dependencies are installed."""
@@ -25,6 +28,7 @@ def check_dependencies() -> bool:
 
     try:
         import importlib.util
+
         if importlib.util.find_spec("yaml") is not None:
             print("✅ PyYAML installed")
         else:
@@ -36,6 +40,7 @@ def check_dependencies() -> bool:
 
     return True
 
+
 def check_data_files() -> bool:
     """Check if required data files exist."""
     print("\n📄 Checking data files...")
@@ -44,7 +49,7 @@ def check_data_files() -> bool:
         "fish_database.yaml",
         "pond_shapes.yaml",
         "PondPlanner.py",
-        "main.py"
+        "main.py",
     ]
 
     for file in required_files:
@@ -56,12 +61,14 @@ def check_data_files() -> bool:
 
     return True
 
+
 def test_pond_planner() -> bool:
     """Test basic PondPlanner functionality."""
     print("\n🧪 Testing PondPlanner functionality...")
 
     try:
         from PondPlanner import PondPlanner
+
         print("✅ PondPlanner import successful")
 
         planner = PondPlanner()
@@ -81,6 +88,7 @@ def test_pond_planner() -> bool:
     except Exception as e:
         print(f"❌ Error testing PondPlanner: {e}")
         return False
+
 
 def test_persistence() -> bool:
     """Test save/load functionality."""
@@ -111,6 +119,7 @@ def test_persistence() -> bool:
         print(f"❌ Error testing persistence: {e}")
         return False
 
+
 def main() -> int:
     """Run all verification checks."""
     print("🔍 Pond Planner Setup Verification")
@@ -121,7 +130,7 @@ def main() -> int:
         check_dependencies(),
         check_data_files(),
         test_pond_planner(),
-        test_persistence()
+        test_persistence(),
     ]
 
     print("\n" + "=" * 40)
@@ -134,6 +143,7 @@ def main() -> int:
         print("❌ Some checks failed. Please fix the issues above.")
         print("\nFor help, see the README.md file or the troubleshooting section.")
         return 1
+
 
 if __name__ == "__main__":
     sys.exit(main())
