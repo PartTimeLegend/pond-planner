@@ -6,32 +6,37 @@ This script verifies that all dependencies are installed and the application
 is working correctly.
 """
 
-import sys
 import os
+import sys
 
-def check_python_version():
-    """Check if Python version is 3.8 or higher."""
+
+def check_python_version() -> bool:
+    """Check if Python version is 3.11 or higher."""
     print("🐍 Checking Python version...")
-    if sys.version_info < (3, 8):
-        print(f"❌ Python 3.8+ required, found {sys.version}")
+    if sys.version_info < (3, 11):
+        print(f"❌ Python 3.11+ required, found {sys.version}")
         return False
     print(f"✅ Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}")
     return True
 
-def check_dependencies():
+def check_dependencies() -> bool:
     """Check if required dependencies are installed."""
     print("\n📦 Checking dependencies...")
 
     try:
-        import yaml
-        print("✅ PyYAML installed")
+        import importlib.util
+        if importlib.util.find_spec("yaml") is not None:
+            print("✅ PyYAML installed")
+        else:
+            print("❌ PyYAML not found. Run: pip install PyYAML>=6.0")
+            return False
     except ImportError:
         print("❌ PyYAML not found. Run: pip install PyYAML>=6.0")
         return False
 
     return True
 
-def check_data_files():
+def check_data_files() -> bool:
     """Check if required data files exist."""
     print("\n📄 Checking data files...")
 
@@ -51,7 +56,7 @@ def check_data_files():
 
     return True
 
-def test_pond_planner():
+def test_pond_planner() -> bool:
     """Test basic PondPlanner functionality."""
     print("\n🧪 Testing PondPlanner functionality...")
 
@@ -77,7 +82,7 @@ def test_pond_planner():
         print(f"❌ Error testing PondPlanner: {e}")
         return False
 
-def test_persistence():
+def test_persistence() -> bool:
     """Test save/load functionality."""
     print("\n💾 Testing persistence functionality...")
 
@@ -106,7 +111,7 @@ def test_persistence():
         print(f"❌ Error testing persistence: {e}")
         return False
 
-def main():
+def main() -> int:
     """Run all verification checks."""
     print("🔍 Pond Planner Setup Verification")
     print("=" * 40)
