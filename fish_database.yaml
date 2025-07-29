@@ -622,3 +622,981 @@ fish_species:
     adult_length_cm: 60
     bioload_factor: 2.2
     min_liters_per_fish: 950
+
+  angelfish_freshwater:
+    name: Freshwater Angelfish
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 76
+
+  barramundi:
+    name: Barramundi
+    adult_length_cm: 180
+    bioload_factor: 4.5
+    min_liters_per_fish: 7600
+
+  bass_peacock:
+    name: Peacock Bass
+    adult_length_cm: 75
+    bioload_factor: 2.8
+    min_liters_per_fish: 1520
+
+  bichir:
+    name: Bichir
+    adult_length_cm: 70
+    bioload_factor: 2.5
+    min_liters_per_fish: 1330
+
+  bluegill_pond:
+    name: Pond Bluegill
+    adult_length_cm: 23
+    bioload_factor: 1.0
+    min_liters_per_fish: 152
+
+  betta_giant:
+    name: Giant Betta
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 76
+
+  cichlid_convict:
+    name: Convict Cichlid
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 114
+
+  cichlid_firemouth:
+    name: Firemouth Cichlid
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 114
+
+  danio_giant:
+    name: Giant Danio
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 57
+
+  eel_spiny:
+    name: Spiny Eel
+    adult_length_cm: 30
+    bioload_factor: 1.2
+    min_liters_per_fish: 285
+
+  gourami_kissing:
+    name: Kissing Gourami
+    adult_length_cm: 30
+    bioload_factor: 1.3
+    min_liters_per_fish: 285
+
+  guppy_endler:
+    name: Endler's Guppy
+    adult_length_cm: 3
+    bioload_factor: 0.2
+    min_liters_per_fish: 15
+
+  knife_fish:
+    name: Black Ghost Knife Fish
+    adult_length_cm: 50
+    bioload_factor: 1.8
+    min_liters_per_fish: 760
+
+  loach_kuhli:
+    name: Kuhli Loach
+    adult_length_cm: 10
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  minnow_cloud:
+    name: White Cloud Minnow
+    adult_length_cm: 4
+    bioload_factor: 0.2
+    min_liters_per_fish: 15
+
+  pleco_royal:
+    name: Royal Pleco
+    adult_length_cm: 43
+    bioload_factor: 1.7
+    min_liters_per_fish: 570
+
+  rasbora_harlequin:
+    name: Harlequin Rasbora
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  shark_rainbow:
+    name: Rainbow Shark
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 190
+
+  tetra_black_skirt:
+    name: Black Skirt Tetra
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 30
+
+  tetra_congo:
+    name: Congo Tetra
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  tetra_rummy_nose:
+    name: Rummy Nose Tetra
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  weatherfish:
+    name: Weather Loach
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  bass_rock:
+    name: Rock Bass
+    adult_length_cm: 28
+    bioload_factor: 1.2
+    min_liters_per_fish: 228
+
+  bowfin_long_eared:
+    name: Long-eared Bowfin
+    adult_length_cm: 65
+    bioload_factor: 2.3
+    min_liters_per_fish: 1140
+
+  catfish_glass:
+    name: Glass Catfish
+    adult_length_cm: 15
+    bioload_factor: 0.7
+    min_liters_per_fish: 114
+
+  gouramis_pearl:
+    name: Pearl Gourami
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 76
+
+  hatchetfish:
+    name: Silver Hatchetfish
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 30
+
+  killifish:
+    name: American Killifish
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 57
+
+  piranha_red_belly:
+    name: Red Belly Piranha
+    adult_length_cm: 33
+    bioload_factor: 1.5
+    min_liters_per_fish: 380
+
+  pufferfish_dwarf:
+    name: Dwarf Pufferfish
+    adult_length_cm: 3
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  african_butterfly_fish:
+    name: African Butterfly Fish
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 76
+
+  african_knife_fish:
+    name: African Knife Fish
+    adult_length_cm: 30
+    bioload_factor: 1.3
+    min_liters_per_fish: 285
+
+  alligator_gar:
+    name: Alligator Gar
+    adult_length_cm: 200
+    bioload_factor: 5.0
+    min_liters_per_fish: 9500
+
+  arowana_asian:
+    name: Asian Arowana
+    adult_length_cm: 90
+    bioload_factor: 3.2
+    min_liters_per_fish: 2280
+
+  arowana_silver:
+    name: Silver Arowana
+    adult_length_cm: 120
+    bioload_factor: 4.0
+    min_liters_per_fish: 3800
+
+  bass_australian:
+    name: Australian Bass
+    adult_length_cm: 60
+    bioload_factor: 2.1
+    min_liters_per_fish: 950
+
+  bass_white:
+    name: White Bass
+    adult_length_cm: 40
+    bioload_factor: 1.6
+    min_liters_per_fish: 475
+
+  betta_wild:
+    name: Wild Betta
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  bloodfin_tetra:
+    name: Bloodfin Tetra
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  blue_acara:
+    name: Blue Acara
+    adult_length_cm: 20
+    bioload_factor: 1.0
+    min_liters_per_fish: 190
+
+  blue_gourami:
+    name: Blue Gourami
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 114
+
+  boga:
+    name: Boga
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  bronze_cory:
+    name: Bronze Corydoras
+    adult_length_cm: 7
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  bullhead_flat:
+    name: Flat Bullhead
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  cardinal_shrimp:
+    name: Cardinal Shrimp
+    adult_length_cm: 2
+    bioload_factor: 0.1
+    min_liters_per_fish: 8
+
+  carp_leather:
+    name: Leather Carp
+    adult_length_cm: 85
+    bioload_factor: 3.1
+    min_liters_per_fish: 1710
+
+  carp_mirror:
+    name: Mirror Carp
+    adult_length_cm: 80
+    bioload_factor: 3.0
+    min_liters_per_fish: 1520
+
+  catfish_albino:
+    name: Albino Catfish
+    adult_length_cm: 50
+    bioload_factor: 1.9
+    min_liters_per_fish: 665
+
+  catfish_walking:
+    name: Walking Catfish
+    adult_length_cm: 40
+    bioload_factor: 1.6
+    min_liters_per_fish: 475
+
+  char_dolly_varden:
+    name: Dolly Varden Char
+    adult_length_cm: 55
+    bioload_factor: 2.0
+    min_liters_per_fish: 760
+
+  cherry_barb:
+    name: Cherry Barb
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  cichlid_green_terror:
+    name: Green Terror Cichlid
+    adult_length_cm: 30
+    bioload_factor: 1.3
+    min_liters_per_fish: 285
+
+  cichlid_jack_dempsey:
+    name: Jack Dempsey Cichlid
+    adult_length_cm: 25
+    bioload_factor: 1.2
+    min_liters_per_fish: 190
+
+  cichlid_jewel:
+    name: Jewel Cichlid
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 114
+
+  cichlid_oscar_tiger:
+    name: Tiger Oscar
+    adult_length_cm: 40
+    bioload_factor: 1.7
+    min_liters_per_fish: 475
+
+  coho_salmon:
+    name: Coho Salmon
+    adult_length_cm: 70
+    bioload_factor: 2.5
+    min_liters_per_fish: 1330
+
+  danio_pearl:
+    name: Pearl Danio
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 30
+
+  danio_spotted:
+    name: Spotted Danio
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  darter_johnny:
+    name: Johnny Darter
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  eel_american_glass:
+    name: American Glass Eel
+    adult_length_cm: 15
+    bioload_factor: 0.7
+    min_liters_per_fish: 114
+
+  eel_moray_freshwater:
+    name: Freshwater Moray Eel
+    adult_length_cm: 60
+    bioload_factor: 2.2
+    min_liters_per_fish: 950
+
+  electric_catfish:
+    name: Electric Catfish
+    adult_length_cm: 120
+    bioload_factor: 4.0
+    min_liters_per_fish: 3800
+
+  fantail_black:
+    name: Black Fantail Goldfish
+    adult_length_cm: 18
+    bioload_factor: 0.9
+    min_liters_per_fish: 114
+
+  firefish:
+    name: Fire Goby
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  flowerhorn:
+    name: Flowerhorn Cichlid
+    adult_length_cm: 40
+    bioload_factor: 1.7
+    min_liters_per_fish: 475
+
+  freshwater_stingray:
+    name: Freshwater Stingray
+    adult_length_cm: 60
+    bioload_factor: 2.3
+    min_liters_per_fish: 1140
+
+  gar_florida:
+    name: Florida Gar
+    adult_length_cm: 84
+    bioload_factor: 3.0
+    min_liters_per_fish: 1710
+
+  gar_spotted:
+    name: Spotted Gar
+    adult_length_cm: 90
+    bioload_factor: 3.2
+    min_liters_per_fish: 1900
+
+  gourami_chocolate:
+    name: Chocolate Gourami
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 38
+
+  gourami_dwarf:
+    name: Dwarf Gourami
+    adult_length_cm: 9
+    bioload_factor: 0.4
+    min_liters_per_fish: 57
+
+  gourami_honey:
+    name: Honey Gourami
+    adult_length_cm: 7
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  gourami_paradise:
+    name: Paradise Gourami
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 57
+
+  gourami_snakeskin:
+    name: Snakeskin Gourami
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  gourami_three_spot:
+    name: Three Spot Gourami
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 114
+
+  grayling_arctic:
+    name: Arctic Grayling
+    adult_length_cm: 38
+    bioload_factor: 1.5
+    min_liters_per_fish: 380
+
+  grouper_freshwater:
+    name: Freshwater Grouper
+    adult_length_cm: 45
+    bioload_factor: 1.8
+    min_liters_per_fish: 570
+
+  gudgeon_stone:
+    name: Stone Gudgeon
+    adult_length_cm: 15
+    bioload_factor: 0.7
+    min_liters_per_fish: 76
+
+  guppy_fancy:
+    name: Fancy Guppy
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 30
+
+  guppy_wild:
+    name: Wild Guppy
+    adult_length_cm: 4
+    bioload_factor: 0.2
+    min_liters_per_fish: 19
+
+  haddock_freshwater:
+    name: Freshwater Haddock
+    adult_length_cm: 30
+    bioload_factor: 1.3
+    min_liters_per_fish: 285
+
+  haplochromis:
+    name: Haplochromis
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 76
+
+  hatchetfish_marbled:
+    name: Marbled Hatchetfish
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  herring_lake:
+    name: Lake Herring
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  ide_golden:
+    name: Golden Ide
+    adult_length_cm: 55
+    bioload_factor: 2.0
+    min_liters_per_fish: 760
+
+  julie_cichlid:
+    name: Julie Cichlid
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 76
+
+  killifish_blue:
+    name: Blue Killifish
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  killifish_golden:
+    name: Golden Killifish
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 30
+
+  kribensis:
+    name: Kribensis
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 57
+
+  lake_chub:
+    name: Lake Chub
+    adult_length_cm: 20
+    bioload_factor: 0.9
+    min_liters_per_fish: 152
+
+  lamprey_brook:
+    name: Brook Lamprey
+    adult_length_cm: 15
+    bioload_factor: 0.7
+    min_liters_per_fish: 76
+
+  loach_hillstream:
+    name: Hillstream Loach
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  loach_pond:
+    name: Pond Loach
+    adult_length_cm: 30
+    bioload_factor: 1.2
+    min_liters_per_fish: 285
+
+  loach_yoyo:
+    name: Yoyo Loach
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 114
+
+  madtom:
+    name: Tadpole Madtom
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 57
+
+  minnow_bluntnose:
+    name: Bluntnose Minnow
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  minnow_creek_chub:
+    name: Creek Chub Minnow
+    adult_length_cm: 15
+    bioload_factor: 0.7
+    min_liters_per_fish: 76
+
+  molly_balloon:
+    name: Balloon Molly
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 57
+
+  molly_sailfin:
+    name: Sailfin Molly
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 114
+
+  mosquitofish:
+    name: Mosquitofish
+    adult_length_cm: 4
+    bioload_factor: 0.2
+    min_liters_per_fish: 19
+
+  mudminnow:
+    name: Central Mudminnow
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 57
+
+  murray_cod:
+    name: Murray Cod
+    adult_length_cm: 180
+    bioload_factor: 4.5
+    min_liters_per_fish: 7600
+
+  neon_blue_tetra:
+    name: Neon Blue Tetra
+    adult_length_cm: 4
+    bioload_factor: 0.2
+    min_liters_per_fish: 19
+
+  neon_green_tetra:
+    name: Neon Green Tetra
+    adult_length_cm: 3
+    bioload_factor: 0.2
+    min_liters_per_fish: 15
+
+  oscar_albino:
+    name: Albino Oscar
+    adult_length_cm: 35
+    bioload_factor: 1.6
+    min_liters_per_fish: 380
+
+  otocinclus:
+    name: Otocinclus
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  paddlefish_chinese:
+    name: Chinese Paddlefish
+    adult_length_cm: 300
+    bioload_factor: 7.0
+    min_liters_per_fish: 19000
+
+  paradise_fish:
+    name: Paradise Fish
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 57
+
+  pencilfish:
+    name: Golden Pencilfish
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 30
+
+  perch_climbing:
+    name: Climbing Perch
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  perch_european:
+    name: European Perch
+    adult_length_cm: 30
+    bioload_factor: 1.3
+    min_liters_per_fish: 285
+
+  pike_grass:
+    name: Grass Pike
+    adult_length_cm: 40
+    bioload_factor: 1.6
+    min_liters_per_fish: 475
+
+  pike_redfin:
+    name: Redfin Pike
+    adult_length_cm: 35
+    bioload_factor: 1.4
+    min_liters_per_fish: 380
+
+  platy_moon:
+    name: Moon Platy
+    adult_length_cm: 7
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  platy_sunset:
+    name: Sunset Platy
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 30
+
+  platy_variatus:
+    name: Variatus Platy
+    adult_length_cm: 7
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  pleco_chocolate:
+    name: Chocolate Pleco
+    adult_length_cm: 20
+    bioload_factor: 0.9
+    min_liters_per_fish: 152
+
+  pleco_leopard:
+    name: Leopard Pleco
+    adult_length_cm: 43
+    bioload_factor: 1.7
+    min_liters_per_fish: 570
+
+  pleco_zebra:
+    name: Zebra Pleco
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  polypterus:
+    name: Polypterus
+    adult_length_cm: 35
+    bioload_factor: 1.4
+    min_liters_per_fish: 380
+
+  pufferfish_figure_eight:
+    name: Figure Eight Pufferfish
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 76
+
+  pufferfish_green_spotted:
+    name: Green Spotted Pufferfish
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 190
+
+  pupfish:
+    name: Desert Pupfish
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  ram_blue:
+    name: Blue Ram
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  ram_german_blue:
+    name: German Blue Ram
+    adult_length_cm: 7
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  rasbora_boraras:
+    name: Boraras Rasbora
+    adult_length_cm: 2
+    bioload_factor: 0.1
+    min_liters_per_fish: 8
+
+  rasbora_scissortail:
+    name: Scissortail Rasbora
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 114
+
+  redside_dace:
+    name: Redside Dace
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 76
+
+  ryukin_goldfish:
+    name: Ryukin Goldfish
+    adult_length_cm: 20
+    bioload_factor: 1.0
+    min_liters_per_fish: 152
+
+  salmon_atlantic_landlocked:
+    name: Landlocked Atlantic Salmon
+    adult_length_cm: 60
+    bioload_factor: 2.2
+    min_liters_per_fish: 950
+
+  salmon_pink:
+    name: Pink Salmon
+    adult_length_cm: 50
+    bioload_factor: 1.9
+    min_liters_per_fish: 665
+
+  severum:
+    name: Severum
+    adult_length_cm: 25
+    bioload_factor: 1.2
+    min_liters_per_fish: 190
+
+  shark_bala:
+    name: Bala Shark
+    adult_length_cm: 35
+    bioload_factor: 1.5
+    min_liters_per_fish: 380
+
+  shark_red_tail:
+    name: Red Tail Shark
+    adult_length_cm: 15
+    bioload_factor: 0.8
+    min_liters_per_fish: 114
+
+  shiner_common:
+    name: Common Shiner
+    adult_length_cm: 15
+    bioload_factor: 0.7
+    min_liters_per_fish: 76
+
+  shiner_golden:
+    name: Golden Shiner
+    adult_length_cm: 20
+    bioload_factor: 0.9
+    min_liters_per_fish: 152
+
+  siamese_fighting_fish:
+    name: Siamese Fighting Fish
+    adult_length_cm: 7
+    bioload_factor: 0.4
+    min_liters_per_fish: 19
+
+  snakehead:
+    name: Northern Snakehead
+    adult_length_cm: 85
+    bioload_factor: 3.1
+    min_liters_per_fish: 1710
+
+  swordtail_green:
+    name: Green Swordtail
+    adult_length_cm: 14
+    bioload_factor: 0.7
+    min_liters_per_fish: 76
+
+  swordtail_red:
+    name: Red Swordtail
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 57
+
+  tetra_bleeding_heart:
+    name: Bleeding Heart Tetra
+    adult_length_cm: 8
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  tetra_buenos_aires:
+    name: Buenos Aires Tetra
+    adult_length_cm: 7
+    bioload_factor: 0.4
+    min_liters_per_fish: 38
+
+  tetra_diamond:
+    name: Diamond Tetra
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 30
+
+  tetra_ember:
+    name: Ember Tetra
+    adult_length_cm: 2
+    bioload_factor: 0.1
+    min_liters_per_fish: 8
+
+  tetra_flame:
+    name: Flame Tetra
+    adult_length_cm: 4
+    bioload_factor: 0.2
+    min_liters_per_fish: 19
+
+  tetra_glass:
+    name: Glass Tetra
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 30
+
+  tetra_lemon:
+    name: Lemon Tetra
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  tetra_mexican:
+    name: Mexican Tetra
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 76
+
+  tetra_pristella:
+    name: Pristella Tetra
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  tetra_serpae:
+    name: Serpae Tetra
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  threadfin_rainbow:
+    name: Threadfin Rainbow
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  tilapia_blue:
+    name: Blue Tilapia
+    adult_length_cm: 35
+    bioload_factor: 1.5
+    min_liters_per_fish: 380
+
+  tilapia_nile:
+    name: Nile Tilapia
+    adult_length_cm: 40
+    bioload_factor: 1.6
+    min_liters_per_fish: 475
+
+  trout_cutthroat:
+    name: Cutthroat Trout
+    adult_length_cm: 55
+    bioload_factor: 2.0
+    min_liters_per_fish: 760
+
+  trout_golden:
+    name: Golden Trout
+    adult_length_cm: 40
+    bioload_factor: 1.6
+    min_liters_per_fish: 475
+
+  uaru:
+    name: Uaru
+    adult_length_cm: 30
+    bioload_factor: 1.3
+    min_liters_per_fish: 285
+
+  vampire_tetra:
+    name: Vampire Tetra
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 76
+
+  warmouth_bass:
+    name: Warmouth Bass
+    adult_length_cm: 25
+    bioload_factor: 1.1
+    min_liters_per_fish: 190
+
+  whitefish_lake:
+    name: Lake Whitefish
+    adult_length_cm: 50
+    bioload_factor: 1.9
+    min_liters_per_fish: 665
+
+  whitefish_mountain:
+    name: Mountain Whitefish
+    adult_length_cm: 35
+    bioload_factor: 1.4
+    min_liters_per_fish: 380
+
+  x_ray_tetra:
+    name: X-ray Tetra
+    adult_length_cm: 5
+    bioload_factor: 0.3
+    min_liters_per_fish: 23
+
+  yellow_lab_cichlid:
+    name: Yellow Lab Cichlid
+    adult_length_cm: 10
+    bioload_factor: 0.5
+    min_liters_per_fish: 57
+
+  zebra_cichlid:
+    name: Zebra Cichlid
+    adult_length_cm: 12
+    bioload_factor: 0.6
+    min_liters_per_fish: 76
+
+  zebra_pleco_l46:
+    name: Zebra Pleco L46
+    adult_length_cm: 6
+    bioload_factor: 0.3
+    min_liters_per_fish: 38

@@ -14,6 +14,7 @@ from services.PondStockManager import PondStockManager
 from services.PondTransactionManager import PondTransactionManager
 from services.PondValidationService import PondValidationService
 from services.ReportGenerator import ReportGenerator
+from services.PondPersistenceService import PondPersistenceService, PondConfiguration
 
 
 class PondPlanner:
@@ -60,6 +61,7 @@ class PondPlanner:
         )
         self._stocking_calculator = StockingCalculator(self._fish_repository)
         self._volume_calculator = VolumeCalculator(self._shape_repository)
+        self._persistence_service = PondPersistenceService()
 
         # Pond state
         self.dimensions: PondDimensions = None
@@ -548,3 +550,120 @@ class PondPlanner:
         return self._report_generator.generate_comprehensive_report(
             self.dimensions, self._stock_manager.get_stock()
         )
+
+    def save_pond(self, name: str, description: str = "") -> str:
+        """
+        Save the current pond configuration to file.
+
+        Args:
+            name: Name for the saved pond configuration
+            description: Optional description of the pond
+
+        Returns:
+            str: Filename of the saved configuration
+
+        Raises:
+            ValueError: If no pond dimensions are set
+            OSError: If the file cannot be saved
+
+        Example:
+            >>> planner.set_dimensions(5, 3, 1.5, "rectangular")
+            >>> planner.add_fish("goldfish", 10)
+            >>> filename = planner.save_pond("My Garden Pond", "Beautiful koi pond")
+            >>> print(f"Saved as: {filename}")
+        """
+        if self.dimensions is None:
+            raise ValueError("Cannot save pond: no dimensions set")
+
+        configuration = PondConfiguration(
+            name=name,
+            dimensions=self.dimensions,
+            fish_stock=self._stock_manager.get_stock(),
+            description=description,
+        )
+
+        return self._persistence_service.save_pond(configuration)
+
+    def load_pond(self, filename: str) -> None:
+        """
+        Load a pond configuration from file.
+
+        Args:
+            filename: Filename of the saved configuration (with or without .json extension)
+
+        Raises:
+            FileNotFoundError: If the configuration file doesn't exist
+            ValueError: If the file contains invalid data
+
+        Example:
+            >>> planner.load_pond("my_garden_pond")
+            >>> print(f"Loaded pond: {planner.dimensions.shape}")
+        """
+        configuration = self._persistence_service.load_pond(filename)
+
+        # Load dimensions
+        self.dimensions = configuration.dimensions
+
+        # Load fish stock
+        self._stock_manager.clear_stock()
+        for fish_type, quantity in configuration.fish_stock.items():
+            self._stock_manager.add_fish(fish_type, quantity)
+
+    def list_saved_ponds(self) -> list[dict[str, any]]:
+        """
+        List all saved pond configurations.
+
+        Returns:
+            List of dictionaries with pond metadata
+
+        Example:
+            >>> ponds = planner.list_saved_ponds()
+            >>> for pond in ponds:
+            ...     print(f"{pond['name']}: {pond['fish_count']} fish")
+        """
+        return self._persistence_service.list_saved_ponds()
+
+    def delete_saved_pond(self, filename: str) -> bool:
+        """
+        Delete a saved pond configuration.
+
+        Args:
+            filename: Filename of the configuration to delete
+
+        Returns:
+            bool: True if deleted successfully, False if file didn't exist
+
+        Example:
+            >>> success = planner.delete_saved_pond("old_pond")
+            >>> print("Deleted" if success else "File not found")
+        """
+        return self._persistence_service.delete_pond(filename)
+
+    def pond_exists(self, filename: str) -> bool:
+        """
+        Check if a saved pond configuration exists.
+
+        Args:
+            filename: Filename to check
+
+        Returns:
+            bool: True if the configuration exists
+
+        Example:
+            >>> if planner.pond_exists("my_pond"):
+            ...     planner.load_pond("my_pond")
+        """
+        return self._persistence_service.pond_exists(filename)
+
+    def get_fish_stock(self) -> dict[str, int]:
+        """
+        Get the current fish stock in the pond.
+
+        Returns:
+            Dictionary mapping fish types to quantities
+
+        Example:
+            >>> stock = planner.get_fish_stock()
+            >>> print(f"Current fish: {stock}")
+        """
+        return self._stock_manager.get_stock()

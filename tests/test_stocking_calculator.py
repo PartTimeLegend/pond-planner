@@ -9,6 +9,14 @@ from Fish import Fish
 class TestStockingCalculator:
     """Test cases for StockingCalculator class."""
 
+    def __init__(self):
+        """Initialize test class attributes."""
+        self.mock_fish_repo = None
+        self.goldfish = None
+        self.koi = None
+        self.shubunkin = None
+        self.calculator = None
+
     def setup_method(self):
         """Set up test fixtures before each test method."""
         # Mock fish repository
@@ -115,6 +123,14 @@ class TestStockingCalculator:
 
         # 5 × 1.0 + 2 × 2.5 = 5.0 + 5.0 = 10.0
         assert result == 10.0
+
+    def test_calculate_bioload_zero_quantity(self):
+        """Test that zero or negative quantities are ignored."""
+        stock = {"goldfish": 5, "koi": 0, "shubunkin": -1}
+        result = self.calculator.calculate_bioload(stock)
+
+        # Only goldfish should count: 5 × 1.0 = 5.0
+        assert result == 5.0
 
     def test_calculate_bioload_invalid_fish_data(self):
         """Test handling of fish with invalid bioload_factor."""

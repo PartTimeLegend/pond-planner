@@ -12,7 +12,7 @@ class YamlFishRepository(DataRepository):
     Handles loading and caching fish data from YAML files.
     """
 
-    def __init__(self, yaml_file_path: str = None):
+    def __init__(self, yaml_file_path: str | None = None):
         """
         Initialize the repository with optional custom YAML file path.
 
@@ -135,5 +135,4 @@ class YamlFishRepository(DataRepository):
         Returns:
             list[str]: A sorted list of fish keys (identifiers) available in the repository.
         """
-        return sorted(self._fish_cache.keys())
         return sorted(self._fish_cache.keys())

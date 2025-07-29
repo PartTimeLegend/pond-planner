@@ -280,5 +280,3 @@ class PondStockManager:
             ...     print("No goldfish currently stocked")
         """
         return fish_type.lower() in self._fish_stock
-        return fish_type.lower() in self._fish_stock
-        return fish_type.lower() in self._fish_stock
