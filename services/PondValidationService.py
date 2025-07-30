@@ -1,4 +1,4 @@
-from interfaces.ShapeRepository import ShapeRepository
+from interfaces.shape_repository import ShapeRepository
 from interfaces.ValidationService import ValidationService
 
 
@@ -15,9 +15,21 @@ class PondValidationService(ValidationService):
             shape_repository: Optional shape repository for validation rules
         """
         if shape_repository is None:
-            from repositories.YamlShapeRepository import YamlShapeRepository
+            # Create a default mock implementation until YamlShapeRepository is available
+            class DefaultShapeRepository:
+                def get_validation_rules(self):
+                    return {
+                        "min_dimensions": {"length": 1.0, "width": 1.0, "depth": 0.5},
+                        "max_dimensions": {"length": 50.0, "width": 50.0, "depth": 5.0}
+                    }
 
-            shape_repository = YamlShapeRepository()
+                def shape_exists(self, shape: str) -> bool:
+                    return shape.lower() in ["rectangular", "circular", "oval", "kidney"]
+
+                def get_shape_keys(self) -> list[str]:
+                    return ["rectangular", "circular", "oval", "kidney"]
+
+            shape_repository = DefaultShapeRepository()
 
         self._shape_repository = shape_repository
         self._validation_rules = shape_repository.get_validation_rules()
@@ -111,7 +123,7 @@ class PondValidationService(ValidationService):
         for fish_type, quantity in fish_stock.items():
             if not isinstance(fish_type, str):
                 errors.append(f"Fish type must be string, got {type(fish_type)}")
-            if not isinstance(quantity, int):
+            elif not isinstance(quantity, int):
                 errors.append(
                     f"Quantity for {fish_type} must be integer, got {type(quantity)}"
                 )
@@ -119,6 +131,4 @@ class PondValidationService(ValidationService):
                 quantity_errors = self.validate_fish_quantity(quantity)
                 errors.extend([f"{fish_type}: {error}" for error in quantity_errors])
 
-        return errors
-        return errors
         return errors

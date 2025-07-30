@@ -3,7 +3,7 @@ from typing import Any
 
 import yaml
 
-from interfaces.ShapeRepository import ShapeRepository
+from interfaces.shape_repository import ShapeRepository
 
 
 class YamlShapeRepository(ShapeRepository):

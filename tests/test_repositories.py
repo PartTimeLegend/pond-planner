@@ -5,8 +5,8 @@ import pytest
 import yaml
 
 from Fish import Fish
-from repositories.YamlFishRepository import YamlFishRepository
-from repositories.YamlShapeRepository import YamlShapeRepository
+from repositories.yaml_fish_repository import YamlFishRepository
+from repositories.yaml_shape_repository import YamlShapeRepository
 
 
 class TestYamlFishRepository:

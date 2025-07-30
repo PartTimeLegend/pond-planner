@@ -10,7 +10,7 @@ from services.PondValidationService import PondValidationService
 class TestPondStockManager:
     """Test cases for PondStockManager service."""
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Set up test fixtures before each test method."""
         self.mock_fish_repo = Mock()
         self.mock_validation = Mock()
@@ -26,14 +26,14 @@ class TestPondStockManager:
             self.mock_fish_repo, self.mock_validation, self.mock_transaction
         )
 
-    def test_add_fish_valid(self):
+    def test_add_fish_valid(self) -> None:
         """Test adding valid fish to stock."""
         self.manager.add_fish("goldfish", 5)
 
         stock = self.manager.get_stock()
         assert stock["goldfish"] == 5
 
-    def test_add_fish_accumulates(self):
+    def test_add_fish_accumulates(self) -> None:
         """Test that adding fish accumulates quantities."""
         self.manager.add_fish("goldfish", 5)
         self.manager.add_fish("goldfish", 3)
@@ -41,21 +41,21 @@ class TestPondStockManager:
         stock = self.manager.get_stock()
         assert stock["goldfish"] == 8
 
-    def test_add_fish_validation_error(self):
+    def test_add_fish_validation_error(self) -> None:
         """Test that validation errors are raised."""
         self.mock_validation.validate_fish_quantity.return_value = ["Invalid quantity"]
 
         with pytest.raises(ValueError, match="Invalid quantity"):
             self.manager.add_fish("goldfish", -1)
 
-    def test_add_fish_unknown_fish(self):
+    def test_add_fish_unknown_fish(self) -> None:
         """Test that unknown fish type raises error."""
         self.mock_fish_repo.fish_exists.return_value = False
 
         with pytest.raises(ValueError, match="Unknown fish type"):
             self.manager.add_fish("unknown", 5)
 
-    def test_remove_fish_valid(self):
+    def test_remove_fish_valid(self) -> None:
         """Test removing fish from stock."""
         self.manager.add_fish("goldfish", 10)
         self.manager.remove_fish("goldfish", 3)
@@ -63,7 +63,7 @@ class TestPondStockManager:
         stock = self.manager.get_stock()
         assert stock["goldfish"] == 7
 
-    def test_remove_fish_all(self):
+    def test_remove_fish_all(self) -> None:
         """Test removing all fish removes entry."""
         self.manager.add_fish("goldfish", 5)
         self.manager.remove_fish("goldfish", 10)  # More than available
@@ -71,14 +71,14 @@ class TestPondStockManager:
         stock = self.manager.get_stock()
         assert "goldfish" not in stock
 
-    def test_remove_fish_nonexistent(self):
+    def test_remove_fish_nonexistent(self) -> None:
         """Test removing nonexistent fish does nothing."""
         self.manager.remove_fish("goldfish", 5)  # No goldfish in stock
 
         stock = self.manager.get_stock()
         assert len(stock) == 0
 
-    def test_bulk_add_fish_valid(self):
+    def test_bulk_add_fish_valid(self) -> None:
         """Test bulk adding fish."""
         fish_batch = {"goldfish": 10, "koi": 3}
         self.manager.bulk_add_fish(fish_batch)
@@ -87,14 +87,14 @@ class TestPondStockManager:
         assert stock["goldfish"] == 10
         assert stock["koi"] == 3
 
-    def test_bulk_add_fish_validation_error(self):
+    def test_bulk_add_fish_validation_error(self) -> None:
         """Test that bulk add validation errors are raised."""
         self.mock_validation.validate_fish_stock_data.return_value = ["Invalid data"]
 
         with pytest.raises(ValueError, match="Invalid fish stock data"):
             self.manager.bulk_add_fish({"goldfish": -1})
 
-    def test_get_stock_defensive_copy(self):
+    def test_get_stock_defensive_copy(self) -> None:
         """Test that get_stock returns defensive copy."""
         self.manager.add_fish("goldfish", 5)
 
@@ -107,7 +107,7 @@ class TestPondStockManager:
         # Original should be unchanged
         assert stock2["goldfish"] == 5
 
-    def test_clear_stock(self):
+    def test_clear_stock(self) -> None:
         """Test clearing all stock."""
         self.manager.add_fish("goldfish", 5)
         self.manager.add_fish("koi", 3)
@@ -117,7 +117,7 @@ class TestPondStockManager:
         stock = self.manager.get_stock()
         assert len(stock) == 0
 
-    def test_get_stock_count(self):
+    def test_get_stock_count(self) -> None:
         """Test getting total stock count."""
         self.manager.add_fish("goldfish", 5)
         self.manager.add_fish("koi", 3)
@@ -125,7 +125,7 @@ class TestPondStockManager:
         count = self.manager.get_stock_count()
         assert count == 8
 
-    def test_has_fish(self):
+    def test_has_fish(self) -> None:
         """Test checking if fish type is in stock."""
         self.manager.add_fish("goldfish", 5)
 
@@ -137,7 +137,7 @@ class TestPondStockManager:
 class TestPondValidationService:
     """Test cases for PondValidationService."""
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Set up test fixtures before each test method."""
         self.mock_shape_repo = Mock()
         self.mock_shape_repo.get_validation_rules.return_value = {
@@ -149,29 +149,29 @@ class TestPondValidationService:
 
         self.validator = PondValidationService(self.mock_shape_repo)
 
-    def test_validate_dimensions_valid(self):
+    def test_validate_dimensions_valid(self) -> None:
         """Test validation of valid dimensions."""
         errors = self.validator.validate_dimensions(5.0, 3.0, 1.5)
         assert errors == []
 
-    def test_validate_dimensions_too_small(self):
+    def test_validate_dimensions_too_small(self) -> None:
         """Test validation of dimensions that are too small."""
         errors = self.validator.validate_dimensions(0.05, 3.0, 1.5)
         assert len(errors) == 1
         assert "Length must be at least 0.1 meters" in errors[0]
 
-    def test_validate_dimensions_too_large(self):
+    def test_validate_dimensions_too_large(self) -> None:
         """Test validation of dimensions that are too large."""
         errors = self.validator.validate_dimensions(2000.0, 3.0, 1.5)
         assert len(errors) == 1
         assert "Length cannot exceed 1000.0 meters" in errors[0]
 
-    def test_validate_fish_quantity_valid(self):
+    def test_validate_fish_quantity_valid(self) -> None:
         """Test validation of valid fish quantity."""
         errors = self.validator.validate_fish_quantity(5)
         assert errors == []
 
-    def test_validate_fish_quantity_invalid(self):
+    def test_validate_fish_quantity_invalid(self) -> None:
         """Test validation of invalid fish quantities."""
         errors = self.validator.validate_fish_quantity(0)
         assert "Quantity must be positive" in errors[0]
@@ -179,12 +179,12 @@ class TestPondValidationService:
         errors = self.validator.validate_fish_quantity(15000)
         assert "Quantity exceeds maximum allowed" in errors[0]
 
-    def test_validate_pond_shape_valid(self):
+    def test_validate_pond_shape_valid(self) -> None:
         """Test validation of valid pond shape."""
         errors = self.validator.validate_pond_shape("rectangular")
         assert errors == []
 
-    def test_validate_pond_shape_invalid(self):
+    def test_validate_pond_shape_invalid(self) -> None:
         """Test validation of invalid pond shape."""
         self.mock_shape_repo.shape_exists.return_value = False
 
@@ -192,18 +192,18 @@ class TestPondValidationService:
         assert len(errors) == 1
         assert "Invalid shape 'invalid_shape'" in errors[0]
 
-    def test_validate_fish_stock_data_valid(self):
+    def test_validate_fish_stock_data_valid(self) -> None:
         """Test validation of valid fish stock data."""
         stock_data = {"goldfish": 5, "koi": 3}
         errors = self.validator.validate_fish_stock_data(stock_data)
         assert errors == []
 
-    def test_validate_fish_stock_data_invalid_type(self):
+    def test_validate_fish_stock_data_invalid_type(self) -> None:
         """Test validation of invalid fish stock data type."""
         errors = self.validator.validate_fish_stock_data("not_a_dict")
         assert "Fish stock must be a dictionary" in errors[0]
 
-    def test_validate_fish_stock_data_invalid_values(self):
+    def test_validate_fish_stock_data_invalid_values(self) -> None:
         """Test validation of fish stock data with invalid values."""
         stock_data = {"goldfish": "not_int", 123: 5}
         errors = self.validator.validate_fish_stock_data(stock_data)
@@ -216,11 +216,11 @@ class TestPondValidationService:
 class TestPondTransactionManager:
     """Test cases for PondTransactionManager."""
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Set up test fixtures before each test method."""
         self.manager = PondTransactionManager()
 
-    def test_execute_transaction_success(self):
+    def test_execute_transaction_success(self) -> None:
         """Test successful transaction execution."""
 
         def operation():
@@ -229,7 +229,7 @@ class TestPondTransactionManager:
         result = self.manager.execute_transaction(operation)
         assert result == "success"
 
-    def test_execute_transaction_failure_rollback(self):
+    def test_execute_transaction_failure_rollback(self) -> None:
         """Test transaction rollback on failure."""
 
         def failing_operation():
@@ -238,7 +238,7 @@ class TestPondTransactionManager:
         with pytest.raises(ValueError, match="Test error"):
             self.manager.execute_transaction(failing_operation)
 
-    def test_manual_transaction_success(self):
+    def test_manual_transaction_success(self) -> None:
         """Test manual transaction management success."""
         self.manager.begin_transaction()
         self.manager.save_state("test_key", "original_value")
@@ -246,7 +246,7 @@ class TestPondTransactionManager:
 
         assert not self.manager.is_in_transaction()
 
-    def test_manual_transaction_rollback(self):
+    def test_manual_transaction_rollback(self) -> None:
         """Test manual transaction rollback."""
         self.manager.begin_transaction()
         self.manager.save_state("test_key", "original_value")
@@ -254,7 +254,7 @@ class TestPondTransactionManager:
 
         assert not self.manager.is_in_transaction()
 
-    def test_nested_transaction(self):
+    def test_nested_transaction(self) -> None:
         """Test nested transaction handling."""
 
         def outer_operation():
@@ -267,7 +267,7 @@ class TestPondTransactionManager:
         result = self.manager.execute_transaction(outer_operation)
         assert result == "outer_inner_result"
 
-    def test_state_preservation(self):
+    def test_state_preservation(self) -> None:
         """Test that state is preserved for rollback."""
         self.manager.begin_transaction()
         self.manager.save_state("test_key", "original")
@@ -275,7 +275,7 @@ class TestPondTransactionManager:
         saved_state = self.manager.get_rollback_state("test_key")
         assert saved_state == "original"
 
-    def test_transaction_errors(self):
+    def test_transaction_errors(self) -> None:
         """Test transaction error conditions."""
         # Cannot commit without active transaction
         with pytest.raises(RuntimeError, match="No active transaction to commit"):

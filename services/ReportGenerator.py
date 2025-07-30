@@ -1,8 +1,8 @@
 from calculators.EquipmentCalculator import EquipmentCalculator
-from calculators.StockingCalculator import StockingCalculator
-from calculators.VolumeCalculator import VolumeCalculator
-from interfaces.DataRepository import DataRepository
-from interfaces.ShapeRepository import ShapeRepository
+from calculators.stocking_calculator import StockingCalculator
+from calculators.volume_calculator import VolumeCalculator
+from interfaces.data_repository import DataRepository
+from interfaces.shape_repository import ShapeRepository
 from PondDimensions import PondDimensions
 from repositories.YamlShapeRepository import YamlShapeRepository
 

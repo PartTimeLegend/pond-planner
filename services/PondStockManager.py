@@ -1,4 +1,4 @@
-from interfaces.DataRepository import DataRepository
+from interfaces.data_repository import DataRepository
 from interfaces.TransactionManager import TransactionManager
 from interfaces.ValidationService import ValidationService
 
@@ -279,6 +279,4 @@ class PondStockManager:
             >>> else:
             ...     print("No goldfish currently stocked")
         """
-        return fish_type.lower() in self._fish_stock
-        return fish_type.lower() in self._fish_stock
         return fish_type.lower() in self._fish_stock
