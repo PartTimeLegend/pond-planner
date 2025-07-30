@@ -2,20 +2,12 @@ from unittest.mock import Mock
 
 import pytest
 
-from calculators.StockingCalculator import StockingCalculator
+from calculators.stocking_calculator import StockingCalculator
 from Fish import Fish
 
 
 class TestStockingCalculator:
     """Test cases for StockingCalculator class."""
-
-    def __init__(self):
-        """Initialize test class attributes."""
-        self.mock_fish_repo = None
-        self.goldfish = None
-        self.koi = None
-        self.shubunkin = None
-        self.calculator = None
 
     def setup_method(self):
         """Set up test fixtures before each test method."""

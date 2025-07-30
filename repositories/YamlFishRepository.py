@@ -3,7 +3,7 @@ import os
 import yaml
 
 from Fish import Fish
-from interfaces.DataRepository import DataRepository
+from interfaces.data_repository import DataRepository
 
 
 class YamlFishRepository(DataRepository):

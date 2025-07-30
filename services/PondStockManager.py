@@ -1,4 +1,4 @@
-from interfaces.DataRepository import DataRepository
+from interfaces.data_repository import DataRepository
 from interfaces.TransactionManager import TransactionManager
 from interfaces.ValidationService import ValidationService
 
