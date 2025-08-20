@@ -7,8 +7,10 @@ A comprehensive pond planning application that helps you calculate optimal pond 
 ## Features
 
 - **Pond Volume Calculation**: Supports 13 different pond shapes with accurate volume calculations
-- **Fish Stocking Analysis**: Database of 100+ fish species with space and bioload requirements
+- **Fish Stocking Analysis**: Database of 267 fish species with space and bioload requirements
+- **Save/Load Pond Configurations**: Persistent storage of pond designs with metadata
 - **Equipment Sizing**: Calculates pump, filter, and UV sterilizer requirements
+- **Interactive CLI Interface**: User-friendly menu-driven interface for pond planning
 - **Comprehensive Reports**: Generates detailed planning reports with recommendations
 - **ACID Compliance**: Transaction-safe operations with rollback capabilities
 - **Extensible Design**: SOLID principles with dependency injection for easy customization
@@ -61,6 +63,7 @@ docker-compose up pond-planner
 1. **Clone the repository**:
 
    ```bash
+   git clone https://github.com/parttimelegend/pond-planner.git
    cd pond-planner
    ```
 
@@ -77,6 +80,14 @@ docker-compose up pond-planner
    pip install -r requirements.txt
    ```
 
+4. **Verify installation**:
+
+   ```bash
+   python verify_setup.py
+   ```
+
+   This script will check that all dependencies are installed and the application is working correctly.
+
 ## Quick Start
 
 ### Docker Usage
@@ -85,13 +96,18 @@ docker-compose up pond-planner
 # Interactive mode
 docker run -it ghcr.io/parttimelegend/pond-planner:latest
 
-# With docker-compose for development
+# With persistent storage for saved ponds
+docker run -it -v $(pwd)/data:/app/data ghcr.io/parttimelegend/pond-planner:latest
+
+# With docker-compose for development (includes persistent storage)
 docker-compose up pond-planner-dev
 
 # Build locally
 docker build -t pond-planner .
 docker run -it pond-planner
 ```
+
+**Note**: The docker-compose configuration automatically handles persistent storage for saved pond configurations.
 
 ### Command Line Interface
 
@@ -101,11 +117,28 @@ Run the interactive pond planner:
 python main.py
 ```
 
+The application provides a user-friendly menu interface with options to:
+
+1. **Create new pond plan** - Design a new pond with custom dimensions and fish selection
+2. **Load saved pond plan** - Restore a previously saved pond configuration
+3. **List saved pond plans** - View all saved pond designs with metadata
+4. **Delete saved pond plan** - Remove unwanted saved configurations
+5. **Exit** - Close the application
+
+#### Interactive Features
+
+- **Enhanced fish selection**: Use the `list` command to browse all 267 available fish species
+- **Intelligent filtering**: Fish are categorized by type (freshwater, saltwater, tropical, etc.)
+- **Save with descriptions**: Add custom descriptions to your pond designs
+- **Metadata tracking**: Automatic creation dates and fish counts for saved ponds
+
 The application will guide you through:
 
 1. Setting pond dimensions and shape
-2. Selecting fish types and quantities
-3. Generating a comprehensive planning report
+2. Selecting fish types and quantities from 267 species
+3. Saving your pond configuration with a custom name and description
+4. Loading and modifying existing pond designs
+5. Generating comprehensive planning reports
 
 ### Programmatic Usage
 
@@ -125,6 +158,21 @@ planner.add_fish("koi", 3)
 # Or add multiple fish types at once (atomic operation)
 fish_batch = {"goldfish": 10, "koi": 3, "shubunkin": 5}
 planner.add_fish_batch(fish_batch)
+
+# Save pond configuration with description
+filename = planner.save_pond("My Garden Pond", "Beautiful koi pond for the backyard")
+print(f"Saved as: {filename}")
+
+# List all saved ponds
+saved_ponds = planner.list_saved_ponds()
+for pond in saved_ponds:
+    print(f"- {pond['name']}: {pond['shape']} pond with {pond['fish_count']} fish")
+
+# Load a saved pond configuration
+planner_2 = PondPlanner()
+planner_2.load_pond("My Garden Pond")
+print(f"Loaded pond volume: {planner_2.calculate_volume_liters():,.0f} liters")
+print(f"Fish stock: {planner_2.get_fish_stock()}")
 
 # Calculate pond volume
 volume = planner.calculate_volume_liters()
@@ -163,6 +211,7 @@ The application follows SOLID principles and clean architecture patterns:
 - **PondStockManager**: Fish inventory management with transaction support
 - **PondValidationService**: Input validation using configurable rules
 - **PondTransactionManager**: ACID-compliant transaction management
+- **PondPersistenceService**: Save/load pond configurations with JSON serialization
 
 ### Repositories
 
@@ -177,6 +226,36 @@ The application follows SOLID principles and clean architecture patterns:
 - **Comprehensive Validation**: Multi-layer validation with detailed error messages
 
 ## Configuration
+
+### Data Persistence
+
+Pond configurations are automatically saved to the `data/saved_ponds/` directory as JSON files. Each saved pond includes:
+
+- Pond dimensions and shape
+- Complete fish stock inventory
+- Creation timestamp and description
+- Metadata for easy browsing and management
+
+The persistence system is designed to be:
+
+- **Portable**: JSON files can be easily shared or backed up
+- **Human-readable**: Files can be manually inspected or edited
+- **Versioned**: Compatible with future application updates
+
+### Fish Database
+
+The application includes a comprehensive database of **267 fish species** covering:
+
+- **Freshwater Species**: Goldfish, Koi, Shubunkin, Catfish varieties
+- **Tropical Fish**: Angelfish, Tetras, Gouramis, Cichlids
+- **Specialty Fish**: Arowanas, Discus, Exotic varieties
+- **Regional Varieties**: Asian, European, American species
+
+Each fish species includes detailed information:
+
+- Adult length and bioload requirements
+- Minimum space requirements per fish
+- Compatibility and care notes
 
 ### Adding New Fish Species
 
@@ -255,6 +334,12 @@ The main facade class for pond planning operations.
 - `add_fish(fish_type, quantity)`: Add fish to stock
 - `remove_fish(fish_type, quantity)`: Remove fish from stock
 - `add_fish_batch(fish_dict)`: Add multiple fish types atomically
+- `save_pond(name, description)`: Save current pond configuration to file
+- `load_pond(filename)`: Load pond configuration from file
+- `list_saved_ponds()`: List all saved pond configurations with metadata
+- `delete_saved_pond(filename)`: Delete a saved pond configuration
+- `pond_exists(filename)`: Check if a saved pond configuration exists
+- `get_fish_stock()`: Get current fish inventory
 - `calculate_volume_liters()`: Calculate pond volume
 - `calculate_required_volume()`: Calculate volume needed for current stock
 - `calculate_bioload()`: Calculate total bioload
@@ -291,6 +376,49 @@ For coverage report:
 
 ```bash
 python -m pytest --cov=. tests/
+```
+
+## Troubleshooting
+
+### Common Issues
+
+#### ModuleNotFoundError: No module named 'yaml'
+
+This occurs when PyYAML is not installed. Make sure you've followed the installation steps:
+
+```bash
+# Activate your virtual environment first
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Or install PyYAML directly
+pip install PyYAML>=6.0
+```
+
+#### File permissions issues with saved ponds
+
+Ensure the application has write permissions to create the `data/` directory:
+
+```bash
+# Create the directory if it doesn't exist
+mkdir -p data/saved_ponds
+
+# Check permissions
+ls -la data/
+```
+
+#### Docker container doesn't persist saved ponds
+
+Use volume mounting to persist data:
+
+```bash
+# Mount local data directory
+docker run -it -v $(pwd)/data:/app/data ghcr.io/parttimelegend/pond-planner:latest
+
+# Or use docker-compose (recommended)
+docker-compose up pond-planner
 ```
 
 ## Contributing

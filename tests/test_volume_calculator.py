@@ -3,7 +3,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from calculators.VolumeCalculator import VolumeCalculator
+from calculators.volume_calculator import VolumeCalculator
 from PondDimensions import PondDimensions
 
 

@@ -2,7 +2,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from calculators.StockingCalculator import StockingCalculator
+from calculators.stocking_calculator import StockingCalculator
 from Fish import Fish
 
 
@@ -115,6 +115,14 @@ class TestStockingCalculator:
 
         # 5 × 1.0 + 2 × 2.5 = 5.0 + 5.0 = 10.0
         assert result == 10.0
+
+    def test_calculate_bioload_zero_quantity(self):
+        """Test that zero or negative quantities are ignored."""
+        stock = {"goldfish": 5, "koi": 0, "shubunkin": -1}
+        result = self.calculator.calculate_bioload(stock)
+
+        # Only goldfish should count: 5 × 1.0 = 5.0
+        assert result == 5.0
 
     def test_calculate_bioload_invalid_fish_data(self):
         """Test handling of fish with invalid bioload_factor."""
